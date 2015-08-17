@@ -81,9 +81,9 @@ public class Matrix
 			
 			objMatrix1.showMatrix();
 			
-	        Matrix objMatrix2 = objMatrix1.transpose();   
+	        	Matrix objMatrix2 = objMatrix1.transpose();   
 	        
-	        objMatrix2.showMatrix();
+	        	objMatrix2.showMatrix();
 		}
 		catch( Exception ex )
 		{
