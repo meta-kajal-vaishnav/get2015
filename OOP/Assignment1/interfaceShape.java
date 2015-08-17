@@ -77,18 +77,18 @@ public class interfaceShape
 		{
 			shapeObj = new interfaceShape ();
 			
-	        circleShape = new Circle (2);  // passing object of circle class in reference of interface Shape
-	        squareShape = new Square (5);  // passing object of square class in reference of interface Shape
+	        	circleShape = new Circle (2);  // passing object of circle class in reference of interface Shape
+	        	squareShape = new Square (5);  // passing object of square class in reference of interface Shape
 	        
-	        System.out.println( "Area of circle = "+shapeObj.printShape(circleShape) );		 // it takes interface object as parameter. It calls getArea() for the circle class. 
-	        System.out.println( "Area of square = "+shapeObj.printShape(squareShape) );         // it takes interface object as parameter. It calls getArea() for the square class.
+	        	System.out.println( "Area of circle = "+shapeObj.printShape(circleShape) );		 // it takes interface object as parameter. It calls getArea() for the circle class. 
+	        	System.out.println( "Area of square = "+shapeObj.printShape(squareShape) );         // it takes interface object as parameter. It calls getArea() for the square class.
 	        
-	        List<Shape> shape = new ArrayList<Shape>();    // List array of type interface is created
-	        shape.add(circleShape);  // adding circle area to list
-	        shape.add(squareShape);  // adding square area to list
+	        	List<Shape> shape = new ArrayList<Shape>();    // List array of type interface is created
+	        	shape.add(circleShape);  // adding circle area to list
+	        	shape.add(squareShape);  // adding square area to list
 	        
-	        for( Shape obj1 : shape )					   // printing list elements one by one
-	        	System.out.println( obj1.draw() );
+	        	for( Shape obj1 : shape )					   // printing list elements one by one
+	        		System.out.println( obj1.draw() );
 		}
 		catch( Exception ex )
 		{
