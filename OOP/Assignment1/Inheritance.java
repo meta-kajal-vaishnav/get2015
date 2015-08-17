@@ -145,34 +145,34 @@ public class Inheritance
 		
 		try
 		{
-		/* *******************	for student class	********************** */
-		String arrCourses[] = {"Java", "OOPs"};
-		studentObj = new Student (1, "Kajal", 11, arrCourses);
-		System.out.println("UId : "+studentObj.getUid());
-		System.out.println("Name : "+studentObj.getName());
-        System.out.println("Student Id : "+studentObj.getStudentId());
+			/* *******************	for student class	********************** */
+			String arrCourses[] = {"Java", "OOPs"};
+			studentObj = new Student (1, "Kajal", 11, arrCourses);
+			System.out.println("UId : "+studentObj.getUid());
+			System.out.println("Name : "+studentObj.getName());
+        		System.out.println("Student Id : "+studentObj.getStudentId());
         
-        System.out.println("Courses : ");
-        String arrGetCourses[] = studentObj.getCourses();
-        for(int index1=0; index1<arrGetCourses.length; index1++)
-        	System.out.print(arrGetCourses[index1]+" ");
+        		System.out.println("Courses : ");
+        		String arrGetCourses[] = studentObj.getCourses();
+        		for(int index1=0; index1<arrGetCourses.length; index1++)
+        			System.out.print(arrGetCourses[index1]+" ");
         
-        System.out.println(studentObj);  // tests toString(), when object is printed toString is called by default
+        		System.out.println(studentObj);  // tests toString(), when object is printed toString is called by default
         
         
-        /* *******************	for teacher class	********************** */
-        String arrSubjects[] = {"DBMS", "Maths"};
-		teacherObj = new Teacher (2, "Sonal", 111, arrSubjects);
-		System.out.println("\n\nUId : "+teacherObj.getUid());
-		System.out.println("Name : "+teacherObj.getName());
-        System.out.println("Teacher Id : "+teacherObj.getTeacherId());
+        		/* *******************	for teacher class	********************** */
+        		String arrSubjects[] = {"DBMS", "Maths"};
+			teacherObj = new Teacher (2, "Sonal", 111, arrSubjects);
+			System.out.println("\n\nUId : "+teacherObj.getUid());
+			System.out.println("Name : "+teacherObj.getName());
+        		System.out.println("Teacher Id : "+teacherObj.getTeacherId());
         
-        System.out.println("Subjects : ");
-        String arrGetSubjects[] = teacherObj.getSubjects();
-        for(int index1=0; index1<arrGetSubjects.length; index1++)
-        	System.out.print(arrGetSubjects[index1]+" ");
+        		System.out.println("Subjects : ");
+        		String arrGetSubjects[] = teacherObj.getSubjects();
+        		for(int index1=0; index1<arrGetSubjects.length; index1++)
+        			System.out.print(arrGetSubjects[index1]+" ");
         
-        System.out.println("\n"+teacherObj);  // tests toString()
+        		System.out.println("\n"+teacherObj);  // tests toString()
 		}
 		catch( Exception ex )
 		{
