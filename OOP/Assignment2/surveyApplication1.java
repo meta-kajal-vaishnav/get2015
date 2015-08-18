@@ -57,6 +57,7 @@ public class surveyApplication1
 		int index1, index2 = -1, index3 = -1, index4 = -1, numOfSingleSelectQues = 10, numOfMultipleSelectQues = 10, numOfTextQues = 10;
 		Scanner sc = null;
 		String filePath = "C://Users/Kajal/workspace/Assignment6/src/";
+		String quesType[] = { "Single Select", "Multiple Select", "Text"};
 		sc = new Scanner(System.in);
 		
 		String singleSelectAns[] = new String[numOfSingleSelectQues];       // Collects answers of all single select Questions
@@ -84,19 +85,19 @@ public class surveyApplication1
 				
 				while((line = reader.readLine())!= null)
 				{
-					if(line.indexOf("Single Select")!= -1)               // takes answers of all single select questions for 1 participant
+					if(line.indexOf(quesType[0])!= -1)               // takes answers of all single select questions for 1 participant
 		        	{  
 		        		System.out.println(line);
 		        		index2++;
 		        		singleSelectAns [index2] = sc.next();
 		        	}
-					else if(line.indexOf("Multiple Select")!= -1)        // takes answers of all multiple select questions for 1 participant    
+					else if(line.indexOf(quesType[1])!= -1)        // takes answers of all multiple select questions for 1 participant    
 		        	{  
 		        		index3++;
 		        		System.out.println(line);
 		        		multipleSelectAns [index3] = sc.next();
 		        	}
-					else if(line.indexOf("Text")!= -1)                   // takes answers of all text questions for 1 participant
+					else if(line.indexOf(quesType[2])!= -1)                   // takes answers of all text questions for 1 participant
 		        	{  
 		        		index4++;
 		        		System.out.println(line);
@@ -148,20 +149,20 @@ public class surveyApplication1
 				String line;
 				while((line = reader.readLine())!= null)
 				{
-		        	if(line.indexOf("Single Select")!= -1)            
+		        	if(line.indexOf(quesType[0])!= -1)            
 		        	{  
 		        		index2++;
 		        		System.out.println(line);
 		        		System.out.println(singleSelectAns[index2]);
 		        		str[index1]  =  str[index1].concat(singleSelectAns[index2]);
 		        	}
-		        	if(line.indexOf("Multiple Select")!= -1)            
+		        	if(line.indexOf(quesType[1])!= -1)            
 		        	{  
 		        		index3++;
 		        		System.out.println(line);
 		        		System.out.println(multipleSelectAns[index3]);		        		
 		        	}
-		        	else if(line.indexOf("Text")!= -1)            
+		        	else if(line.indexOf(quesType[2])!= -1)            
 		        	{  
 			        	index4++;
 		        		System.out.println(line);
@@ -206,3 +207,4 @@ public class surveyApplication1
 		}
 	}
 }
+
