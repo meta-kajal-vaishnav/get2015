@@ -91,165 +91,183 @@ public class TrainReservationSystem
 		Scanner sc = null;
 		InputStream in = null;
 		BufferedReader reader = null;
-		String filePath = "C://Users/Kajal/workspace/Assignment7/src/";
+		String filePath = "C://javaprg/eclipse/Assignment7/src/"; //"C://javaprg/eclipse/Assignment7/src/"   // "C://Users/Kajal/workspace/Assignment7/src/"
 		
-		ArrayList<Train> trainList = new ArrayList<Train>();
-		ArrayList<Train> trainListFinal = new ArrayList<Train>();
+		ArrayList<Train> trainList = null;
+		ArrayList<Train> trainListFinal = null;
 		
-		Passenger passengerObj = new Passenger();
+		Passenger passengerObj = null;
 		
-		sc = new Scanner(System.in);
-        
-		// reads all train's info from file & stores them in a list = trainList
 		try
 		{	
-			in = new FileInputStream( new File(filePath + "train.txt"));  
-			reader = new BufferedReader (new InputStreamReader(in));
-			String line;
-			index = 0;
-			while((line = reader.readLine())!= null)
-			{  
-	        	String arr[] = line.split(",");
-	        	
-	        	String trainName1 = arr[0];
-	        	String trainSeatsOrWeight1 = arr[1];
-	        	String trainFromTo1 = arr[2];
-	        	String trainCost1 = arr[3];
-	        	String trainDuration1 = arr[4];
-	        	String trainType1 = arr[5];
-	        	trainList.add ( new Train ( trainName1, trainFromTo1, trainType1, trainCost1, trainSeatsOrWeight1, trainDuration1 ) );
-	        }
-			in.close();
-			reader.close();
+			passengerObj = new Passenger();
+			trainList = new ArrayList<Train>();
+			trainListFinal = new ArrayList<Train>();
+			sc = new Scanner(System.in);
+	        
+			// reads all train's info from file & stores them in a list = trainList
+			try
+			{	
+				in = new FileInputStream( new File(filePath + "train.txt"));  
+				reader = new BufferedReader (new InputStreamReader(in));
+				String line;
+				index = 0;
+				while((line = reader.readLine())!= null)
+				{  
+					String arr[] = line.split(",");
+			       		trainList.add ( new Train ( arr[0], arr[2], arr[5], arr[3], arr[1], arr[4] ) );
+		        	}
+				in.close();
+				reader.close();
+			}
+			catch( Exception ex )
+			{
+				ex.printStackTrace();
+			}
+	
+			// bubble sort for sorting train list according to duration
+			bubbleSort (trainList);    
+			
+			// takes multiple users for booking
+			char choice = 'y';
+			while ( choice=='Y' ||choice=='y' )
+			{
+				System.out.println("\n\nEnter your name");
+				passengerObj.passengerName = sc.next();
+				
+				System.out.println("\n\nEnter Train Type  -  Passenger/Goods (P/G)");
+				String trainType = sc.next();
+				
+				System.out.println("\n\nThe available trains : \nTrain Name\tTrain Fare\tTrain Duration\tTrain Seat/Weight\tTrain fron-to\tTrain Type");
+				// sorts train list according to entered train type and places final selected trains in a new list
+				for ( Train trainObj : new ArrayList<Train>(trainList) )
+				{
+					if ( trainObj.trainType.equals(trainType+".."))
+					{	
+						System.out.println (trainObj.trainName+"\t\t"+trainObj.trainCost+"\t\t"+trainObj.trainDuration+"\t\t"+trainObj.trainSeatsOrWeight+"\t\t"+trainObj.trainFromTo+"\t\t"+trainObj.trainType) ;
+						trainListFinal.add(new Train (trainObj.trainName, trainObj.trainFromTo, trainObj.trainType, trainObj.trainCost, trainObj.trainSeatsOrWeight, trainObj.trainDuration) );
+						trainList.remove(trainObj);
+					}
+				}
+				
+				
+				System.out.println("\n\nPlease enter from-to Station");
+				String fromToStation = sc.next();
+					
+				System.out.println("\n\nThe available trains : \nTrain Name\tTrain Fare\tTrain Duration\tTrain Seat/Weight");
+				// sorts train list according to entered train from-to station and places final selected trains in a new list & rejected trains back to previous list
+				for ( Train trainObj : new ArrayList<Train>(trainListFinal) )
+				{
+					if ( trainObj.trainFromTo.equals(fromToStation))
+						System.out.println (trainObj.trainName+"\t\t"+trainObj.trainCost+"\t\t"+trainObj.trainDuration+"\t\t"+trainObj.trainSeatsOrWeight) ;
+					else
+					{
+						trainListFinal.remove(trainObj);
+					    trainList.add(trainObj);
+					}
+				}
+				
+				
+				System.out.println("\n\nPlease enter Train name");
+				String trainName = sc.next();
+				System.out.println("Enter Seat (if Passenger)/Weight (if Goods)");
+				int seatOrWeight = sc.nextInt();
+				
+				System.out.println("\n\nThe available train : \nTrain Name\tTrain Fare\tTrain Duration\tTrain Seat/Weight");
+				// sorts train list according to entered train name and weight/seat and then places final selected trains in a new list & rejected trains back to previous list
+				for ( Train trainObj : new ArrayList<Train>(trainListFinal) )
+				{
+					if ( trainObj.trainName.equals(trainName))
+					{
+						if ( Integer.parseInt(trainObj.trainSeatsOrWeight) > seatOrWeight)
+						{
+							passengerObj.seatsBooked = seatOrWeight ;
+							trainObj.trainSeatsOrWeight = ""+( Integer.parseInt(trainObj.trainSeatsOrWeight) - seatOrWeight );
+							System.out.println (trainObj.trainName+"\t\t"+trainObj.trainCost+"\t\t"+trainObj.trainDuration+"\t\t"+trainObj.trainSeatsOrWeight) ;
+						}
+						else if ( Integer.parseInt(trainObj.trainSeatsOrWeight) < seatOrWeight)
+						{	
+							System.out.println ("Sorry, Seats are unavailable");
+							System.exit(0);   
+						}				
+					}
+					else
+					{
+						trainListFinal.remove(trainObj);
+						trainList.add(trainObj);
+					}
+				}
+				
+	            
+				// does payment 
+				Payment paymentObj;
+				String paymentMethod [] = {"Credit_Card", "Wallet", "Net_Banking"};
+				System.out.println("\n\nPlease enter payment method [ Credit_Card / Wallet / Net_Banking] ");
+				String paymentType = sc.next();
+				if ( paymentType.equals(paymentMethod[0]))        // for credit card
+				{
+					System.out.println ("\n\nEnter your ccNumber");
+					String ccNumber = sc.next();
+					System.out.println ("\n\nEnter your ccNumber");
+					String cvv = sc.next();
+					paymentObj = new Payment ( ccNumber, cvv) ;
+				}
+				else if ( paymentType.equals(paymentMethod[2]))    //  for net banking
+				{
+					System.out.println ("\n\nEnter your Bank");
+					String bank = sc.next();
+					System.out.println ("\n\nEnter your username");
+					String username = sc.next();
+					System.out.println ("\n\nEnter your password");
+					String password = sc.next();
+					paymentObj = new Payment ( bank, username, password) ;
+				}
+				else
+					System.out.println ("Processing the payment amt...");    // for wallet
+				
+				
+				// generates train ticket
+				for ( Train trainObj :  new ArrayList<Train>(trainListFinal))
+				{
+					System.out.println ("\n\nYour train ticket : \nUsername\tTrain Name\tNo. of seats/weight booked\tPaid amt");  
+					System.out.println (passengerObj.passengerName+"\t\t"+trainObj.trainName+"\t\t"+passengerObj.seatsBooked + "\t\t\t\t" + (Integer.parseInt(trainObj.trainCost)*passengerObj.seatsBooked) );
+					trainList.add(trainObj);
+					trainListFinal.remove(trainObj);
+				}
+				
+				
+				// generates updated train chart
+				System.out.println ("\n\nUpdated train chart : \nTrain Name\tTrain Fare\tTrain Duration\tTrain Seat/Weight");
+				bubbleSort (trainList);
+				for ( Train trainObj : trainList )
+				{
+					System.out.println (trainObj.trainName+"\t\t"+trainObj.trainCost+"\t\t"+trainObj.trainDuration+"\t\t"+trainObj.trainSeatsOrWeight) ;
+				}
+				
+				
+				// if user wishes , booking continues
+				System.out.println ("\nDo you want to book more trains ? [Y/N]");
+				choice = sc.next().charAt(0);
+			}
 		}
-		catch( Exception ex )
+		catch(Exception ex)
 		{
 			ex.printStackTrace();
 		}
-		
-		// bubble sort for sorting train list according to duration
-		bubbleSort (trainList);    
-		
-		// takes multiple users for booking
-		char ch = 'y';
-		while ( ch=='Y' ||ch=='y' )
+		finally
 		{
-			System.out.println("\n\nEnter your name");
-			passengerObj.passengerName = sc.next();
-			
-			System.out.println("\n\nEnter Train Type  -  Passenger/Goods (P/G)");
-			String trainType = sc.next();
-			
-			System.out.println("\n\nThe available trains : \nTrain Name\tTrain Fare\tTrain Duration\tTrain Seat/Weight\tTrain fron-to\tTrain Type");
-			// sorts train list according to entered train type and places final selected trains in a new list
-			for ( Train trainObj : new ArrayList<>(trainList) )
-			{
-				if ( trainObj.trainType.equals(trainType+".."))
-				{	
-					System.out.println (trainObj.trainName+"\t\t"+trainObj.trainCost+"\t\t"+trainObj.trainDuration+"\t\t"+trainObj.trainSeatsOrWeight+"\t\t"+trainObj.trainFromTo+"\t\t"+trainObj.trainType) ;
-					trainListFinal.add(new Train (trainObj.trainName, trainObj.trainFromTo, trainObj.trainType, trainObj.trainCost, trainObj.trainSeatsOrWeight, trainObj.trainDuration) );
-					trainList.remove(trainObj);
-				}
-			}
-			
-			
-			System.out.println("\n\nPlease enter from-to Station");
-			String fromToStation = sc.next();
-				
-			System.out.println("\n\nThe available trains : \nTrain Name\tTrain Fare\tTrain Duration\tTrain Seat/Weight");
-			// sorts train list according to entered train from-to station and places final selected trains in a new list & rejected trains back to previous list
-			for ( Train trainObj : new ArrayList<>(trainListFinal) )
-			{
-				if ( trainObj.trainFromTo.equals(fromToStation))
-					System.out.println (trainObj.trainName+"\t\t"+trainObj.trainCost+"\t\t"+trainObj.trainDuration+"\t\t"+trainObj.trainSeatsOrWeight) ;
-				else
-				{
-					trainListFinal.remove(trainObj);
-				    trainList.add(trainObj);
-				}
-			}
-			
-			
-			System.out.println("\n\nPlease enter Train name");
-			String trainName = sc.next();
-			System.out.println("Enter Seat (if Passenger)/Weight (if Goods)");
-			int seatOrWeight = sc.nextInt();
-			
-			System.out.println("\n\nThe available train : \nTrain Name\tTrain Fare\tTrain Duration\tTrain Seat/Weight");
-			// sorts train list according to entered train name and weight/seat and then places final selected trains in a new list & rejected trains back to previous list
-			for ( Train trainObj : new ArrayList<>(trainListFinal) )
-			{
-				if ( trainObj.trainName.equals(trainName))
-				{
-					if ( Integer.parseInt(trainObj.trainSeatsOrWeight) > seatOrWeight)
-					{
-						passengerObj.seatsBooked = seatOrWeight ;
-						trainObj.trainSeatsOrWeight = ""+( Integer.parseInt(trainObj.trainSeatsOrWeight) - seatOrWeight );
-						System.out.println (trainObj.trainName+"\t\t"+trainObj.trainCost+"\t\t"+trainObj.trainDuration+"\t\t"+trainObj.trainSeatsOrWeight) ;
-					}
-					else if ( Integer.parseInt(trainObj.trainSeatsOrWeight) < seatOrWeight)
-					{	
-						System.out.println ("Sorry, Seats are unavailable");
-						System.exit(0);   
-					}				
-				}
-				else
-				{
-					trainListFinal.remove(trainObj);
-					trainList.add(trainObj);
-				}
-			}
-			
-            
-			// does payment 
-			Payment paymentObj;
-			String paymentMethod [] = {"Credit_Card", "Wallet", "Net_Banking"};
-			System.out.println("\n\nPlease enter payment method [ Credit_Card / Wallet / Net_Banking] ");
-			String paymentType = sc.next();
-			if ( paymentType.equals(paymentMethod[0]))        // for credit card
-			{
-				System.out.println ("\n\nEnter your ccNumber");
-				String ccNumber = sc.next();
-				System.out.println ("\n\nEnter your ccNumber");
-				String cvv = sc.next();
-				paymentObj = new Payment ( ccNumber, cvv) ;
-			}
-			else if ( paymentType.equals(paymentMethod[2]))    //  for net banking
-			{
-				System.out.println ("\n\nEnter your Bank");
-				String bank = sc.next();
-				System.out.println ("\n\nEnter your username");
-				String username = sc.next();
-				System.out.println ("\n\nEnter your password");
-				String password = sc.next();
-				paymentObj = new Payment ( bank, username, password) ;
-			}
-			else
-				System.out.println ("Processing the payment amt...");    // for wallet
-			
-			
-			// generates train ticket
-			for ( Train trainObj :  new ArrayList<>(trainListFinal))
-			{
-				System.out.println ("\n\nYour train ticket : \nUsername\tTrain Name\tNo. of seats/weight booked\tPaid amt");  
-				System.out.println (passengerObj.passengerName+"\t\t"+trainObj.trainName+"\t\t"+passengerObj.seatsBooked + "\t\t\t\t" + trainObj.trainCost);
-				trainList.add(trainObj);
-				trainListFinal.remove(trainObj);
-			}
-			
-			
-			// generates updated train chart
-			System.out.println ("\n\nUpdated train chart : \nTrain Name\tTrain Fare\tTrain Duration\tTrain Seat/Weight");
-			bubbleSort (trainList);
-			for ( Train trainObj : trainList )
-			{
-				System.out.println (trainObj.trainName+"\t\t"+trainObj.trainCost+"\t\t"+trainObj.trainDuration+"\t\t"+trainObj.trainSeatsOrWeight) ;
-			}
-			
-			
-			// if user wishes , booking continues
-			System.out.println ("\nDo you want to book more trains ? [Y/N]");
-			ch = sc.next().charAt(0);
+			if(sc!=null)
+				sc = null;
+			if(in!=null)
+				in = null;
+			if(passengerObj!=null)
+				passengerObj = null;
+			if(trainList!=null)
+				trainList = null;
+			if(trainListFinal!=null)
+				trainListFinal = null;
+			if(reader!=null)
+				reader = null;
 		}
 	}
 }
