@@ -17,13 +17,15 @@ import menu.MenuItemNew;
 
 public class Facebook {
 
+	static String fileName = "C://Users/Kajal/workspace/Assignment10/src/mainClasses/";
+	
 	// enters entity details into file
 	void enterEntityDetailsInFile ( String entityDetails )
 	{
 		FileWriter  fw = null;
 		try
 		{	
-			fw = new FileWriter("C://Users/Kajal/workspace/Assignment10/src/mainClasses/EntityDetails.txt", true);  
+			fw = new FileWriter(fileName+"EntityDetails.txt", true);  
 			fw.write(entityDetails+"\n");
 			fw.close();
 		}
@@ -222,8 +224,8 @@ public class Facebook {
 							case 4: boolean flag = graphObj.deleteNode( nodeList, personObj.name, entityFriendship );
 								if(flag==true)
 								{	
-									File inputFile = new File("C://Users/Kajal/workspace/Assignment10/src/mainClasses/EntityDetails.txt");
-									File tempFile = new File("C://Users/Kajal/workspace/Assignment10/src/mainClasses/EntityDetailsTmp.txt");
+									File inputFile = new File(fileName+"EntityDetails.txt");
+									File tempFile = new File(fileName+"EntityDetailsTmp.txt");
 
 									BufferedReader reader1 = new BufferedReader(new FileReader(inputFile));
 									BufferedWriter writer1 = new BufferedWriter(new FileWriter(tempFile));
