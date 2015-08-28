@@ -43,18 +43,18 @@ public class InfixToPostfix
 			case '*' :
 				
 			case '/' : precedence = 2;
-					   break;
+				   break;
 					   
 			case '+' :
 				
 			case '-' : precedence = 1;
-					   break;
+				   break;
 			
 			case '(' : precedence = 3;
-					   break;
+				   break;
 					   
 			case ')' : precedence = 4;
-				   	   break;
+				   break;
 				   
 			default : precedence = 0; 
 		}
