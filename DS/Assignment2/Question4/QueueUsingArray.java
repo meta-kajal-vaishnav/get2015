@@ -21,7 +21,6 @@ public class QueueUsingArray<T>
 			rear = rear + 1;
 			if ( rear == arr.length )
 			{	
-				//System.out.println("Overflow");
 				int size = arr.length + SIZE;
 				Student newData[] = new Student[size];
 				for(int count=0; count<arr.length; count++)
@@ -29,8 +28,7 @@ public class QueueUsingArray<T>
 				arr = newData;
 				
 			}
-//			else
-				arr[rear] = item;
+			arr[rear] = item;
 		}
 	}
 	
