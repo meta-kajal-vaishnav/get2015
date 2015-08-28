@@ -27,28 +27,28 @@ public class QueueUsingArrayMain
 			switch (choice)
 			{
 				case 1 : System.out.println("\nEnter item to add in queue : ");
-						 item = sc.nextInt();
-						 objQueueUsingArray.enqueue(item);
-						 break;
+					 item = sc.nextInt();
+					 objQueueUsingArray.enqueue(item);
+					 break;
 						
 				case 2 : item = objQueueUsingArray.dequeue();
-						 System.out.println("Item deleted : "+item);
-						 break;
+					 System.out.println("Item deleted : "+item);
+					 break;
 						 
 				case 3 : objQueueUsingArray.emptyQueue();
-				 		 break;
+				 	 break;
 				 		 
 				case 4 : System.out.println("Item at front : "+objQueueUsingArray.getFront());
-		 		 		 break;
+		 		 	 break;
 						 
 				case 5 : objQueueUsingArray.printQueue();
-						 break;
+					 break;
 						 
 				case 6 : System.exit(0);
-				 		 break;
+				 	 break;
 				
 				default : System.out.println("Please enter correct choice");
-				  		  break;
+				  	  break;
 			}
 		}
 
