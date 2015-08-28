@@ -28,21 +28,21 @@ public class CollegeCounseling
 		
 		try
 		{	
-		    File file = new File(fileName+"StudentsData.txt");
-		    FileReader fr = new FileReader(file);
-		    BufferedReader br = new BufferedReader(fr);
-		    String line;
-		    while((line = br.readLine()) != null)
-		    {
-		    	totalStudents = totalStudents + 1;
-		    	String arr[] = line.split(",");
-		    	objStudent = new Student ();
-		    	objStudent.setStudentName(arr[0]);
-		    	objStudent.setStudentRank(Integer.parseInt(arr[1]));
-		    	studentList.add(objStudent);
-		    }
-		    br.close();
-		    fr.close();
+			File file = new File(fileName+"StudentsData.txt");
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while((line = br.readLine()) != null)
+			{
+				totalStudents = totalStudents + 1;
+		    		String arr[] = line.split(",");
+		    		objStudent = new Student ();
+		    		objStudent.setStudentName(arr[0]);
+		    		objStudent.setStudentRank(Integer.parseInt(arr[1]));
+		    		studentList.add(objStudent);
+		    	}
+		    	br.close();
+			 fr.close();
 		}
 		catch( Exception ex )
 		{
@@ -76,21 +76,21 @@ public class CollegeCounseling
 		
 		try
 		{	
-		    File file = new File ( fileName+"CollegeData.txt" );
-		    FileReader fr = new FileReader(file);
-		    BufferedReader br = new BufferedReader(fr);
-		    String line;
-		    while((line = br.readLine()) != null)
-		    {
-		    	String arr[] = line.split(",");
-		    	objCollege = new College ();
-		    	objCollege.setCollegeName(arr[0]);
-		    	objCollege.setTotalNumOfSeats(Integer.parseInt(arr[1]));
-		    	totalSeats = totalSeats + Integer.parseInt(arr[1]);
-		    	collegeList.add(objCollege);
-		    }
-		    br.close();
-		    fr.close();
+			File file = new File ( fileName+"CollegeData.txt" );
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while((line = br.readLine()) != null)
+			{
+		  		String arr[] = line.split(",");
+		    		objCollege = new College ();
+		    		objCollege.setCollegeName(arr[0]);
+		    		objCollege.setTotalNumOfSeats(Integer.parseInt(arr[1]));
+		    		totalSeats = totalSeats + Integer.parseInt(arr[1]);
+		    		collegeList.add(objCollege);
+		    	}
+			br.close();
+		    	fr.close();
 		}
 		catch( Exception ex )
 		{
@@ -103,52 +103,52 @@ public class CollegeCounseling
 	{
 		for ( int index = 0; index<=totalStudents; index++)
 		{
-				boolean flagSeatAllocated = false, flagSeatAllocatedClgFound = false;
+			boolean flagSeatAllocated = false, flagSeatAllocatedClgFound = false;
 				
-				Student student = (Student)objStudentQueueUsingArray.dequeue();
+			Student student = (Student)objStudentQueueUsingArray.dequeue();
 				
-				do
+			do
+			{
+				flagSeatAllocated = false;
+				for ( College collegeInfo : collegeList )
 				{
-					flagSeatAllocated = false;
-					for ( College collegeInfo : collegeList )
-					{
-						if(collegeInfo.getTotalNumOfSeats() != 0)
-							System.out.println ("College Name : "+collegeInfo.collegeName+"\tNum Of Seats : "+collegeInfo.totalNumOfSeats);
-					}
+					if(collegeInfo.getTotalNumOfSeats() != 0)
+						System.out.println ("College Name : "+collegeInfo.collegeName+"\tNum Of Seats : "+collegeInfo.totalNumOfSeats);
+				}
 					
-					System.out.println("\nStudent : "+student.getStudentName()+"\t Rank : "+student.getStudentRank());
+				System.out.println("\nStudent : "+student.getStudentName()+"\t Rank : "+student.getStudentRank());
 					
-					System.out.println ("\nEnter college name of your choice : ");
+				System.out.println ("\nEnter college name of your choice : ");
 					
-					String collegeName = sc.next();
+				String collegeName = sc.next();
 					
-					for ( College collegeInfo : collegeList )
-					{
-						// if college name is matches and its seats are not full then allocate it to student
-						if ( collegeInfo.collegeName.equalsIgnoreCase(collegeName) && collegeInfo.getTotalNumOfSeats() != 0 )
-						{	
-							flagSeatAllocatedClgFound = true;
-							if ( collegeInfo.totalNumOfSeats != 0 )
-							{
-								collegeInfo.totalNumOfSeats -= 1;
-								student.setCollegeName(collegeName);
-								totalSeats -= 1;
-								System.out.println (totalSeats);
-								objStudentQueueUsingArray.enqueue (student);
-								System.out.println("\n college alloted successfully");
-								flagSeatAllocated = true;
-								break;
-							}
-							else
-								System.out.println ("Seats full");
+				for ( College collegeInfo : collegeList )
+				{
+					// if college name is matches and its seats are not full then allocate it to student
+					if ( collegeInfo.collegeName.equalsIgnoreCase(collegeName) && collegeInfo.getTotalNumOfSeats() != 0 )
+					{	
+						flagSeatAllocatedClgFound = true;
+						if ( collegeInfo.totalNumOfSeats != 0 )
+						{
+							collegeInfo.totalNumOfSeats -= 1;
+							student.setCollegeName(collegeName);
+							totalSeats -= 1;
+							System.out.println (totalSeats);
+							objStudentQueueUsingArray.enqueue (student);
+							System.out.println("\n college alloted successfully");
+							flagSeatAllocated = true;
+							break;
 						}
+						else
+							System.out.println ("Seats full");
 					}
-					if ( flagSeatAllocatedClgFound == false )
-						System.out.println ("College not found");
-				}while (totalSeats > 0 && (flagSeatAllocatedClgFound == false || flagSeatAllocated == false) );
+				}
+				if ( flagSeatAllocatedClgFound == false )
+					System.out.println ("College not found");
+			}while (totalSeats > 0 && (flagSeatAllocatedClgFound == false || flagSeatAllocated == false) );
 				
-				if(totalSeats == 0)
-					break;	
+			if(totalSeats == 0)
+				break;	
 		}
 		objStudentQueueUsingArray.printQueue();
 	}
