@@ -1,0 +1,7 @@
+parul,2
+kajal,1
+riddhi,4
+suman,5
+anjita,3
+manish,6
+sumit,7
