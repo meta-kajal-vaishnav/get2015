@@ -35,14 +35,14 @@ public class CollegeCounseling
 			while((line = br.readLine()) != null)
 			{
 				totalStudents = totalStudents + 1;
-		    		String arr[] = line.split(",");
+		   		String arr[] = line.split(",");
 		    		objStudent = new Student ();
 		    		objStudent.setStudentName(arr[0]);
 		    		objStudent.setStudentRank(Integer.parseInt(arr[1]));
 		    		studentList.add(objStudent);
-		    	}
+			}
 		    	br.close();
-			 fr.close();
+			fr.close();
 		}
 		catch( Exception ex )
 		{
@@ -82,15 +82,15 @@ public class CollegeCounseling
 			String line;
 			while((line = br.readLine()) != null)
 			{
-		  		String arr[] = line.split(",");
+		    		String arr[] = line.split(",");
 		    		objCollege = new College ();
 		    		objCollege.setCollegeName(arr[0]);
 		    		objCollege.setTotalNumOfSeats(Integer.parseInt(arr[1]));
 		    		totalSeats = totalSeats + Integer.parseInt(arr[1]);
 		    		collegeList.add(objCollege);
-		    	}
-			br.close();
-		    	fr.close();
+			}
+		    	br.close();
+			 fr.close();
 		}
 		catch( Exception ex )
 		{
@@ -133,9 +133,8 @@ public class CollegeCounseling
 							collegeInfo.totalNumOfSeats -= 1;
 							student.setCollegeName(collegeName);
 							totalSeats -= 1;
-							System.out.println (totalSeats);
 							objStudentQueueUsingArray.enqueue (student);
-							System.out.println("\n college alloted successfully");
+							System.out.println("\nCollege alloted successfully\n");
 							flagSeatAllocated = true;
 							break;
 						}
@@ -144,12 +143,13 @@ public class CollegeCounseling
 					}
 				}
 				if ( flagSeatAllocatedClgFound == false )
-					System.out.println ("College not found");
+					System.out.println ("College not found\n");
 			}while (totalSeats > 0 && (flagSeatAllocatedClgFound == false || flagSeatAllocated == false) );
 				
 			if(totalSeats == 0)
 				break;	
 		}
+		System.out.println ("\nCounseling result\n");
 		objStudentQueueUsingArray.printQueue();
 	}
 	
