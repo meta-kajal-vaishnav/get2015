@@ -25,21 +25,21 @@ public class StackUsingLinkedListMain
 			switch (choice)
 			{
 				case 1 : System.out.println("\nEnter item to push in stack : ");
-						 item = sc.nextInt();
-						 objStackUsingLinkedList.pushItemInStack(item);
-						 break;
+					 item = sc.nextInt();
+					 objStackUsingLinkedList.pushItemInStack(item);
+					 break;
 						
 				case 2 : objStackUsingLinkedList.popItemFromStack();
-						 break;
+					 break;
 						 
 				case 3 : objStackUsingLinkedList.traverseStack();
-						 break;
+					 break;
 						 
 				case 4 : System.exit(0);
-				 		 break;
+				 	 break;
 				
 				default : System.out.println("Please enter correct choice");
-				  		  break;
+				  	  break;
 			}
 		}
 
