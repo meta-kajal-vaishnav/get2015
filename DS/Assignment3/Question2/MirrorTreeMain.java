@@ -25,32 +25,32 @@ public class MirrorTreeMain
 			switch (choice)
 			{
 				case 1 : System.out.println ("\nEnter item ");
-						 item = sc.nextInt();
-						 objMirrorTree1.insertInTree1 ( item );
-						 break;
+					 item = sc.nextInt();
+					 objMirrorTree1.insertInTree1 ( item );
+					 break;
 						 
 				case 2 : System.out.println ("\nEnter item ");
-						 item = sc.nextInt();
-						 objMirrorTree2.insertInTree2 ( item );
-						 break;
+					 item = sc.nextInt();
+					 objMirrorTree2.insertInTree2 ( item );
+					 break;
 						 
 				case 3 : int result = objMirrorTree1.compareIfMirror ( objMirrorTree2 );
-						 if ( result == 1 )
-							 System.out.println("Tree 2 is mirror of tree1");
-						 else
-							 System.out.println("Tree 2 is not a mirror of tree1");
-						 break;
+					 if ( result == 1 )
+						 System.out.println("Tree 2 is mirror of tree1");
+					 else
+						 System.out.println("Tree 2 is not a mirror of tree1");
+					 break;
 						 
 				case 4 : System.out.println("Tree1's inorder traversal : ");
-						 objMirrorTree1.traverseTree ();
-				 		 break;
+					 objMirrorTree1.traverseTree ();
+				 	 break;
 				
 				case 5 : System.out.println("Tree2's inorder traversal : ");
-						 objMirrorTree2.traverseTree ();
-				 		 break;
+					 objMirrorTree2.traverseTree ();
+				 	 break;
 		 		 
 				case 6 : System.exit(0);
-						 break;
+					 break;
 			}
 		}
 	}
