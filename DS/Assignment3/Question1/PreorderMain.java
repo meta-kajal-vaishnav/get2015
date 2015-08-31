@@ -21,19 +21,19 @@ public class PreorderMain
 			switch (choice)
 			{
 				case 1 : System.out.println ("\nEnter item ");
-						 item = sc.nextInt();
-						 objPreorder.insertInTree ( item );
-						 break;
+					 item = sc.nextInt();
+					 objPreorder.insertInTree ( item );
+					 break;
 						 
 				case 2 : System.out.println("Tree in preorder: ");
-						 objPreorder.printPreorder();
-				 		 break;
+					 objPreorder.printPreorder();
+				 	 break;
 				
 				case 3 : System.exit(0);
-						 break;
+					 break;
 						 
 				default : System.out.println("Please enter correct choice");
-						  break;
+					  break;
 			}
 		}
 	}
