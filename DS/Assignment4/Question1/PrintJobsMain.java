@@ -22,29 +22,29 @@ public class PrintJobsMain
 			switch (choice)
 			{
 				case 1 : System.out.println("\nEnter number of jobs : ");
-						 int numOfJobs = sc.nextInt();
-						 objPriorityQueueOfJobs = new PriorityQueueOfJobs (numOfJobs);
-						 for ( int index = 0; index < numOfJobs; index++ )
-						 {
-							 System.out.println("\nEnter job name : ");
-							 String jobName = sc.next();
-							 System.out.println("\nEnter priority of job : ");
-							 int priority = sc.nextInt(); 
-							 
-							 objPriorityQueueOfJobs.insert(jobName, priority);
-						 }
-						 break;
+					 int numOfJobs = sc.nextInt();
+					 objPriorityQueueOfJobs = new PriorityQueueOfJobs (numOfJobs);
+					 for ( int index = 0; index < numOfJobs; index++ )
+					 {
+						 System.out.println("\nEnter job name : ");
+						 String jobName = sc.next();
+						 System.out.println("\nEnter priority of job : ");
+						 int priority = sc.nextInt(); 
+						 
+						 objPriorityQueueOfJobs.insert(jobName, priority);
+					 }
+					 break;
 						
 				case 2 : System.out.println("\nList of print jobs : ");
-						 while (objPriorityQueueOfJobs.isEmpty()==false)
-							 System.out.println(objPriorityQueueOfJobs.remove());
-						 break;
+					 while (objPriorityQueueOfJobs.isEmpty()==false)
+						 System.out.println(objPriorityQueueOfJobs.remove());
+					 break;
 						 
 				case 3 : System.exit(0);
-				 		  break;
+				 	 break;
 				
 				default : System.out.println("Please enter correct choice");
-				  		  break;
+				  	  break;
 			}
 		}
 	}
