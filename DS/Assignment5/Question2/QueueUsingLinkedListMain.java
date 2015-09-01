@@ -25,25 +25,25 @@ public class QueueUsingLinkedListMain
 			switch (choice)
 			{
 				case 1 : System.out.println("\nEnter item to add : ");
-						 objQueueUsingLinkedList.addItemInQueue ( sc.nextInt() );
-						 break;
+					 objQueueUsingLinkedList.addItemInQueue ( sc.nextInt() );
+					 break;
 						 
 				case 2 : int item = objQueueUsingLinkedList.removeItemFromQueue ();
-						 if ( item == -1 )
-							 System.out.println("Queue is empty"); 
-						 else
-							 System.out.println ("Item removed : "+item);
-				 		 break;	
-				 		 
+					 if ( item == -1 )
+						 System.out.println("Queue is empty"); 
+					 else
+						 System.out.println ("Item removed : "+item);
+				 	 break;	
+				 	 
 				case 3 : System.out.println("\nQueue: ");
-						 objQueueUsingLinkedList.traverseQueue();
-						 break;
+					 objQueueUsingLinkedList.traverseQueue();
+					 break;
 						 
 				case 4 : System.exit(0);
-				 		 break;
+				 	 break;
 				
 				default : System.out.println("Please enter correct choice");
-				  		  break;
+				  	  break;
 			}
 		}
 	}
