@@ -23,18 +23,18 @@ public class SortedLinkedListMain
 			switch (choice)
 			{
 				case 1 : System.out.println("\nEnter item to add : ");
-						 objSortedLinkedList.addItemInSortedLinkedList ( sc.nextInt(), 0 );
-						 break;
+					 objSortedLinkedList.addItemInSortedLinkedList ( sc.nextInt(), 0 );
+					 break;
 						
 				case 2 : System.out.println("\nLinked List : ");
-						 objSortedLinkedList.traverseLinkedList();
-						 break;
-						 
+					 objSortedLinkedList.traverseLinkedList();
+					 break;
+					 
 				case 3 : System.exit(0);
-				 		 break;
+				 	 break;
 				
 				default : System.out.println("Please enter correct choice");
-				  		  break;
+				  	  break;
 			}
 		}
 	}
