@@ -27,23 +27,23 @@ public class RoomAllotmentMain
 			switch (choice)
 			{
 				case 1 : objGuest = new Guest();
-						 System.out.println("\nEnter your name : ");
-						 objGuest.setGuestName( sc.next() );
-						 System.out.println("\nEnter your age : ");
-						 objGuest.setAge( sc.nextInt() );
-						 int roomNumber = objRoomAllotment.addGuest ( objGuest );
-						 System.out.println("Room number allotted : "+roomNumber);
-						 break;
+					 System.out.println("\nEnter your name : ");
+					 objGuest.setGuestName( sc.next() );
+					 System.out.println("\nEnter your age : ");
+					 objGuest.setAge( sc.nextInt() );
+					 int roomNumber = objRoomAllotment.addGuest ( objGuest );
+					 System.out.println("Room number allotted : "+roomNumber);
+					 break;
 						
 				case 2 : System.out.println("\nList of booked rooms : ");
-						 objRoomAllotment.displayBookedRoomsList ();
-						 break;
+					 objRoomAllotment.displayBookedRoomsList ();
+					 break;
 						 
 				case 3 : System.exit(0);
-				 		  break;
+				 	  break;
 				
 				default : System.out.println("Please enter correct choice");
-				  		  break;
+				  	  break;
 			}
 		}
 
