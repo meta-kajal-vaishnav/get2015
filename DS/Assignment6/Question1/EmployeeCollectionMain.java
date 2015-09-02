@@ -38,41 +38,41 @@ public class EmployeeCollectionMain
 				switch (choice)
 				{
 					case 1 : System.out.println("\nEnter employee name : ");
-							 String name = sc.next();
-							 System.out.println("\nEnter employee id : ");
-							 int id = sc.nextInt();
-							 System.out.println("\nEnter employee address : ");
-							 String address = sc.next();
-							 objEmpoyee = new Employee ( name, id, address);
-							 boolean flag = false;
-							 // if employee id already exists in list, then don't add employee
-							 for ( Object employee : employeeList )
-							 {
-								 if ( employee.equals(objEmpoyee) )
-								 {	 
-									 flag = true;
-									 break;
-								 }
+						 String name = sc.next();
+						 System.out.println("\nEnter employee id : ");
+						 int id = sc.nextInt();
+						 System.out.println("\nEnter employee address : ");
+						 String address = sc.next();
+						 objEmpoyee = new Employee ( name, id, address);
+						 boolean flag = false;
+						 // if employee id already exists in list, then don't add employee
+						 for ( Object employee : employeeList )
+						 {
+							 if ( employee.equals(objEmpoyee) )
+							 {	 
+								 flag = true;
+								 break;
 							 }
-							 if ( flag == false )
-								 employeeList.add(objEmpoyee);
-							 break;
-							
+						 }
+						 if ( flag == false )
+							 employeeList.add(objEmpoyee);
+						 break;
+						
 					case 2 : Collections.sort( employeeList );
-							 System.out.println("Sort in Natural order");   // according to employee id
-							 System.out.println(employeeList);
-							 break;
+						 System.out.println("Sort in Natural order");   // according to employee id
+						 System.out.println(employeeList);
+						 break;
 							 
 					case 3 : Collections.sort ( employeeList, new EmpNameComparator() );
-							 System.out.println ( "Sort using emp name Comparator");
-							 System.out.println (employeeList );
-							 break;
+						 System.out.println ( "Sort using emp name Comparator");
+						 System.out.println (employeeList );
+						 break;
 							 
 					case 4 : System.exit(0);
-					 		 break;
+					 	 break;
 					
 					default : System.out.println("Please enter correct choice");
-					  		  break;
+					  	  break;
 				}
 			}
 		}
