@@ -36,7 +36,7 @@ public class QueueUsingLinkedListMain
 				 		 break;	
 				 		 
 				case 3 : System.out.println("\nQueue: ");
-						 objQueueUsingLinkedList.traverseQueue();
+						 System.out.println ( objQueueUsingLinkedList.traverseQueue() );
 						 break;
 						 
 				case 4 : System.exit(0);

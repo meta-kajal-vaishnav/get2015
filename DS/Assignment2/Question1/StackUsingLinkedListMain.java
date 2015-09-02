@@ -29,7 +29,7 @@ public class StackUsingLinkedListMain
 						 objStackUsingLinkedList.pushItemInStack(item);
 						 break;
 						
-				case 2 : objStackUsingLinkedList.popItemFromStack();
+				case 2 : System.out.println (objStackUsingLinkedList.popItemFromStack() );
 						 break;
 						 
 				case 3 : objStackUsingLinkedList.traverseStack();

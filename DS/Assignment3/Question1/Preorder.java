@@ -42,18 +42,18 @@ public class Preorder
 	}
 
 	
-	public void printPreorder()
+	public String printPreorder()
 	{
-		printPreorderRecursive ( root );  
+		return printPreorderRecursive ( root );  
 	}
 	
-	public void printPreorderRecursive ( Node root )   // order of printing : Parent, Left child , right child
+	public String printPreorderRecursive ( Node root )   // order of printing : Parent, Left child , right child
 	{
 		if (root == null) 
-			return;  
-		System.out.print(root.getNodeValue()+ ", ");  
-		printPreorderRecursive ( root.getLeft() );  
-		printPreorderRecursive ( root.getRight() );  
+			return "";  
+		return root.getNodeValue()+ ", " 
+				+ printPreorderRecursive ( root.getLeft() ) 
+				+ printPreorderRecursive ( root.getRight() );  
 	}
 	
 }

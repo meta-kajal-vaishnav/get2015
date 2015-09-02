@@ -12,6 +12,6 @@ public class ConcordanceOfCharsMain
 		
 		objConcordanceOfChars.insertInSet ( inputStr );
 		
-		objConcordanceOfChars.findPosition ( inputStr );
+		System.out.println ( objConcordanceOfChars.findPosition ( inputStr ) );
 	}
 }

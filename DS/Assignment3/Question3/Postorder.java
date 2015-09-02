@@ -42,18 +42,22 @@ public class Postorder
 	}
 
 	
-	public void printPostorder()
+	public String printPostorder()
 	{
-		printPostOrderRecursive ( root );  
+		
+		return printPostOrderRecursive ( root ); 
+		
 	}
 	
-	public void printPostOrderRecursive ( Node root )		 // order of printing :  Left child , right child, Parent
+	public String printPostOrderRecursive ( Node root )		 // order of printing :  Left child , right child, Parent
 	{
 		if (root == null) 
-			return;  
-		printPostOrderRecursive ( root.getLeft() );  
-		printPostOrderRecursive ( root.getRight() ); 
-		System.out.print(root.getNodeValue()+ ", ");   
+			return "";  
+		
+		return printPostOrderRecursive ( root.getLeft() ) +  
+				printPostOrderRecursive ( root.getRight())+
+				root.getNodeValue()+ ", "; 
+		
 	}
 	
 }

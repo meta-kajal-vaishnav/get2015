@@ -55,6 +55,4 @@ public class MirrorTreeMain
 		}
 	}
 }
-/*  ip : 40, 25, 78, 10, 32 
-op : 10, 25, 32, 40, 78
-*/
+

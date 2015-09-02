@@ -21,8 +21,9 @@ public class QueueUsingLinkedList
 			return objLinkedList.removeFirst();   //  remove from first
 	}
 	
-	public void traverseQueue ()
+	public String traverseQueue ()
 	{
+		String itemsInQueue = "";
 		if ( objLinkedList.isEmpty() )
 			System.out.println("Queue is empty");
 		else
@@ -30,7 +31,9 @@ public class QueueUsingLinkedList
 			Iterator iterator = objLinkedList.iterator();
 			
 			while ( iterator.hasNext() )
-				System.out.println ( iterator.next() );
+				itemsInQueue += iterator.next()+"\n" ;
 		}
+		
+		return itemsInQueue;
 	}
 }

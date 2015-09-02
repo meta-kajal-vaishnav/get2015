@@ -22,16 +22,16 @@ public class StackUsingLinkedList
 	
 	
 	// pops items in stack
-	public void popItemFromStack ()
+	public String popItemFromStack ()
 	{
 		if ( top == null )
-			System.out.println("Underflow");
+			return "Underflow";
 		else
 		{
 			Node<Object> newNode = new Node <Object> ();
 			newNode.setNodeValue ( top.getNodeValue() );
-			System.out.println ("Item popped : "+newNode.getNodeValue());
 			top = top.getnext();
+			return ""+newNode.getNodeValue();
 		}
 	}
 	

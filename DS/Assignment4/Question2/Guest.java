@@ -17,4 +17,13 @@ public class Guest
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+	public Guest ()
+	{}
+	
+	public Guest ( String guestName, int age )
+	{
+		this.guestName = guestName;
+		this.age = age;
+	}
 }

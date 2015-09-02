@@ -13,7 +13,7 @@ public class CollegeCounseling
 	static String fileName = "C://Users/Kajal/workspace/Assignment12/src/Question4/";
 	int totalSeats = 0, totalStudents = 0;
 	
-	QueueUsingArray objCollegeQueueUsingArray = new QueueUsingArray ();
+	//QueueUsingArray objCollegeQueueUsingArray = new QueueUsingArray ();
 	QueueUsingArray objStudentQueueUsingArray = new QueueUsingArray ();
 	
 	Scanner sc = new Scanner(System.in);
@@ -133,9 +133,8 @@ public class CollegeCounseling
 								collegeInfo.totalNumOfSeats -= 1;
 								student.setCollegeName(collegeName);
 								totalSeats -= 1;
-								System.out.println (totalSeats);
 								objStudentQueueUsingArray.enqueue (student);
-								System.out.println("\n college alloted successfully");
+								System.out.println("\nCollege alloted successfully\n");
 								flagSeatAllocated = true;
 								break;
 							}
@@ -144,12 +143,13 @@ public class CollegeCounseling
 						}
 					}
 					if ( flagSeatAllocatedClgFound == false )
-						System.out.println ("College not found");
+						System.out.println ("College not found\n");
 				}while (totalSeats > 0 && (flagSeatAllocatedClgFound == false || flagSeatAllocated == false) );
 				
 				if(totalSeats == 0)
 					break;	
 		}
+		System.out.println ("\nCounseling result\n");
 		objStudentQueueUsingArray.printQueue();
 	}
 	

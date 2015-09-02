@@ -26,7 +26,7 @@ public class PostorderMain
 						 break;
 						 
 				case 2 : System.out.println("Tree in postorder: ");
-						 objPostorder.printPostorder();
+						 System.out.println ( objPostorder.printPostorder() );
 				 		 break;
 				
 				case 3 : System.exit(0);

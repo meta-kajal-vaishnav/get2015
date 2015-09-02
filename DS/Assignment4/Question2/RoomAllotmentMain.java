@@ -40,7 +40,7 @@ public class RoomAllotmentMain
 						 break;
 						 
 				case 3 : System.exit(0);
-				 		  break;
+				 		 break;
 				
 				default : System.out.println("Please enter correct choice");
 				  		  break;

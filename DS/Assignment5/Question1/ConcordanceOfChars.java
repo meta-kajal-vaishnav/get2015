@@ -15,8 +15,9 @@ public class ConcordanceOfChars
 	}
 	
 	// finding position of all characters
-	public void findPosition ( String str )
+	public String findPosition ( String str )
 	{
+		String answer = "";
 		for ( char val : inputSet )
 		{
 			String position = "[";
@@ -25,7 +26,8 @@ public class ConcordanceOfChars
 				if ( val == str.charAt(index) )   // recording locations of any character in a string
 					position += index+",";
 			}
-			System.out.println (val +" : "+position+"]");
+			answer += val +" : "+position+"]\n";
 		}
+		return answer;
 	}
 }

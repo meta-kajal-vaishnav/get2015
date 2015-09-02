@@ -10,7 +10,7 @@ public class RoomAllotment
 	int totalNumOfRooms = 5;
 	HashMap allotedRooms = new HashMap();
 	
-	// booka room for new guest
+	// book a room for new guest
 	public int addGuest ( Guest objGuest )
 	{
 		boolean flag = false;

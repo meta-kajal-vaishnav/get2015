@@ -26,7 +26,7 @@ public class PreorderMain
 						 break;
 						 
 				case 2 : System.out.println("Tree in preorder: ");
-						 objPreorder.printPreorder();
+						 System.out.println ( objPreorder.printPreorder() );
 				 		 break;
 				
 				case 3 : System.exit(0);
