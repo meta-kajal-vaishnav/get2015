@@ -24,19 +24,19 @@ public class NumOfUniqueCharInStringMain
 			switch (choice)
 			{
 				case 1 : System.out.println("\nEnter string : ");
-						 int count = objNumOfUniqueCharInString.findUniqueCharacters ( sc1.nextLine() ); 
-						 System.out.println("Number of unique characters = "+count);
-						 break;
+					 int count = objNumOfUniqueCharInString.findUniqueCharacters ( sc1.nextLine() ); 
+					 System.out.println("Number of unique characters = "+count);
+					 break;
 						
 				case 2 : System.out.println("\nCache : ");
-						 objNumOfUniqueCharInString.displayCache();
-						 break;
+					 objNumOfUniqueCharInString.displayCache();
+					 break;
 						 
 				case 3 : System.exit(0);
-				 		 break;
+				 	 break;
 				
 				default : System.out.println("Please enter correct choice");
-				  		  break;
+				  	  break;
 			}
 		}
 
