@@ -1,13 +1,12 @@
 package Question1;
 
-public class Node 
-{
+public class Node {
 	// data held by node
 	public int nodeValue;
-	
+
 	// left node in the list
 	public Node left;
-	
+
 	// right node in the list
 	public Node right;
 
@@ -23,7 +22,7 @@ public class Node
 		return left;
 	}
 
-	public void setLeft ( Node left ) {
+	public void setLeft(Node left) {
 		this.left = left;
 	}
 
@@ -31,8 +30,8 @@ public class Node
 		return right;
 	}
 
-	public void setRight ( Node right ) {
+	public void setRight(Node right) {
 		this.right = right;
 	}
-	
+
 }
