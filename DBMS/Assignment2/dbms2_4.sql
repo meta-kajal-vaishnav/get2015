@@ -6,7 +6,7 @@ USE zipcode;
  CREATE TABLE zipcodeInfo
 (
 	zipcode_id int PRIMARY KEY AUTO_INCREMENT,
-  zipcode_number int NOT NULL
+  	zipcode_number int NOT NULL
 );
 
 -- Creating table cityInfo
@@ -15,7 +15,7 @@ CREATE TABLE cityInfo
 	-- To store zip id and city name
 	city_id int PRIMARY KEY AUTO_INCREMENT,
 	city_name varchar(20),
-  zipcode_id int,
+	 zipcode_id int,
 	FOREIGN KEY (zipcode_id) REFERENCES zipcodeInfo (zipcode_id) 
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE stateInfo
 	-- to store zipid and state Name
 	state_id int PRIMARY KEY AUTO_INCREMENT,
 	state_name varchar(20),
-  city_id int,
+  	city_id int,
 	FOREIGN KEY (city_id) REFERENCES cityInfo (city_id) 
 );
  
