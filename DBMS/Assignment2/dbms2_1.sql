@@ -46,15 +46,17 @@ AND m1.member_name="Keshav Sharma" AND m.member_name != m1.member_name;
 
 
 UPDATE Book_return
-SET return_date = "0000-00-00" where member_id = "2";
+SET return_date = "2015-09-25" where member_id = "2";
+
+-- SELECT accession_number AS Acc_no ,member_id AS Mem_id,issue_date AS Iss_d,return_date AS Ret_d FROM Book_return;
+
+INSERT INTO Book_Issue (issue_date, accession_number, member_id, due_date) VALUES ('2015-06-05 17:41:14',1002,3,'2015-09-23');
+INSERT INTO Book_Issue (issue_date, accession_number, member_id, due_date) VALUES ('2015-05-05 17:41:14',1002,4,'2015-09-20');
 
 
-select  * from book_return;
-select  * from Members;
-
-
-SELECT accession_number AS Acc_no ,member_id AS Mem_id,issue_date AS Iss_d,return_date AS Ret_d FROM Book_return;
-
-
+SELECT bi.accession_number AS Acc_no , bi.member_id AS Mem_id, bi.issue_date AS Iss_d, IFNULL(br.return_date, " ") AS Ret_d 
+FROM Book_return br
+RIGHT JOIN Book_issue bi 
+ON br.member_id = bi.member_id ;
 
 
