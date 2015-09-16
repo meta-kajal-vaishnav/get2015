@@ -194,7 +194,6 @@ public class LibraryInformationSystemHelper {
 				ps = (PreparedStatement) con.prepareStatement(query1);
 				/* set variable in prepared statement */
 				ps.setInt(1, rs.getInt("accession_number"));
-				// ps.setString(1,name);
 				ps.executeUpdate();
 				/* increase count per deleted book */
 				count += 1;
