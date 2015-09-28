@@ -1,13 +1,15 @@
+/* applies formatting to whole body */
 body {
     //background: url('title-bg.jpg') center ;
-
-	    line-height: 1.5;
+	line-height: 1.5;
     letter-spacing: 1px;
     font-family: sans-serif;
-	    margin:20px;
+	margin:20px;
     background:#FFF;
     //height:1300px;
 }
+
+/* applies formatting to header */
 header {
     background: rgba(234, 253, 208, 0.98);
     text-align:center;
@@ -19,29 +21,35 @@ header {
     border: #749A5A solid 2px;
 }
 
+/* applies formatting to heading in header */
 header h5 {
     margin-top: -20px;
 }
 
+/* applies formatting to navigation bar */
 nav {
 	background:#749A5A;
 	padding:3px;
 }
 
+/* applies formatting to unordered list in complete document */
 ul {
     margin:0px;
     list-style:none;
 }
 
+/* applies formatting to unordered list in navigation bar */
 nav ul {
     margin: 0px 0px 0px 300px;
 }
 
+/* applies formatting to li of ul in navigation bar */
 nav ul li {
 	display:inline;
 	margin: 0px 200px 0px 0px;
 }
 
+/* applies formatting on anchor tags in navigation bar */
 nav ul li a {
 	color:rgba(234, 253, 208, 0.98);
     padding: 4px;
@@ -49,26 +57,30 @@ nav ul li a {
 	border:1px solid transparent;
 }
 
+/* applies formatting on anchor tags in navigation bar on hover*/
 nav ul li a:hover {
 	color:#749A5A;
 	background-color:rgba(234, 253, 208, 0.98);
 	border:1px solid black ;
 }
 
+/* applies formatting to section */
 section {
-    width:850px;
+    width:600px;
     position:relative;
     left:50px;
     float:left;
 	//height:1300px;
 }
 
+/* applies formatting on all h4 headings */
 h4 {
 	background-color:#C3DCA1;
 	padding-left :10px;
 	margin-top: 0px;
 }
 
+/* applies formatting to left and right aside tags */
 .asideLeft , .asideRight{
 	background-color:rgba(234, 253, 208, 0.98);
 	border:1px solid #C3DCA1;
@@ -76,13 +88,14 @@ h4 {
 	padding:5px;
 }
 
-
+/* applies formatting to left aside tag */
 .asideLeft {
 	width: 300px;
     padding-left: 7px;
     float: left;
 }
 
+/* applies formatting to right aside tag */
 .asideRight {
     width:300px;
     position:relative;
@@ -90,10 +103,12 @@ h4 {
     float:right;
 }
 
+/* applies formatting to image in figure tag */
 figure img {
 	border:black solid 2px;
 }
 
+/* applies formatting to footer */
 footer {
 	margin-top:950px;
 	background:rgba(234, 253, 208, 0.98);
