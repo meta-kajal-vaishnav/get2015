@@ -1,0 +1,46 @@
+/* has formating for whole body */
+body {
+	margin:0 auto;
+	width:700px;
+	background:#FFF;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    font-family: cursive;
+}
+
+/* has formating for header */
+header {
+	margin-top:100px;
+    background-color: #3E8070;
+    height: 65px;
+    padding-left: 50px;
+    padding-bottom: 25px;
+    color: rgb(247, 247, 247);
+    font-weight: bold;
+    border: #2C3F40 solid 2px;
+	box-shadow: 0 0 50px #020D07 inset;
+}
+
+/* has formating for section */
+section {
+	background-color: #CCC3A7;
+	height:350px;
+	box-shadow: 0 0 50px #554515 inset;
+}
+
+/* has formating for div with id "div1" */
+#div1 {
+	width:350px;
+	height:70px;
+	padding:10px;
+	border:1px solid #3E8070;
+}
+
+/* has formating for div with id "div2" */
+#div2 {
+	width:350px;
+	height:40px;
+	width:200px;
+	padding:10px;
+	border:1px solid #3E8070;
+}
