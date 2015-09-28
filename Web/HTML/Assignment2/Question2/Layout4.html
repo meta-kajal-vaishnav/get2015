@@ -32,6 +32,18 @@
 			return false;  
 			} 
 		}
+
+		/*function validateDatalist()
+		{
+			var val=document.getElementByID("locationName").value;
+
+			var obj=document.getElementByID("Location").find("option[value='"+val+"']")
+
+ 			if(obj !=null && obj.length>0)
+     				alert("valid");  // allow form submission
+    			else
+     				alert("invalid"); // don't allow form submission
+		}*/
 		
 	 </script>
   </head>
@@ -47,19 +59,19 @@
 		<header><h2>Registration</h2></header>
   		<section>
 		<center>
-  			<br/><br/><h4>Contact Information</h4>
+  			<br/><h3>Contact Information</h3>
 			<form class="regForm" name="myform" action="Layout4.html">
 				<table>
 					<tr>
-						<td>Name:</td>
+						<td><span>*</span> Name:</td>
 						<td><input type="text" name="firstName" placeholder="Enter name" required/></td>
 					</tr>
 					<tr>
-						<td>Email:</td>
+						<td><span>*</span> Email:</td>
 						<td><input type="email" name="email" placeholder="Enter email" required/></td>
 					</tr>
 					<tr>
-						<td>DOB:</td>
+						<td><span>*</span> DOB:</td>
 						<td><input type="date" name="dob" min="1993-01-01" max="2016-01-01" placeholder="Enter dob" required/></td>
 					</tr>
 					<tr>
@@ -67,17 +79,17 @@
 						<td><input type="range" name="slider" min="1" max="100" value="30" step="10"/></td>
 					</tr>
 					<tr>
-						<td>Gender:</td>
+						<td>Location:</td>
 						<td>
-							<input type="text" name="locationName" list="Location" autocomplete/>
-								<datalist id="Location">
+							<input type="text" name="locationName" list="Location" id="locationName" autocomplete required/>
+								<datalist id="Location" name="locationOption">
 									<option value="Location1">
 									<option value="Location2">
 								</datalist>
 						</td>
 					</tr>
 				</table>
-				<br/><br/><input type="submit" value="Submit"  onclick="allLetter(document.myform.firstName); ValidateEmail(document.myform.email);" />
+				<br/><br/><input type="submit" value="Submit" id="submitForm" onclick="allLetter(document.myform.firstName); ValidateEmail(document.myform.email);validateDatalist();" />
   			</form>
 			</center>
   		</section>
