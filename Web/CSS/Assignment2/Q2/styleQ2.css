@@ -1,0 +1,79 @@
+/* gives formating to whole body */
+body {
+	background:#FFF;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    font-family: cursive;
+}
+
+/* has formating for header */
+header {
+    background-color: #3E8070;
+    height: 65px;
+    padding-left: 50px;
+    padding-bottom: 25px;
+    color: rgb(247, 247, 247);
+    font-weight: bold;
+    border: #2C3F40 solid 2px;
+	box-shadow: 0 0 50px #020D07 inset;
+}
+
+/* has formating for section */
+section {
+	background-color: #CCC3A7;
+	height:1100px;
+	box-shadow: 0 0 50px #554515 inset;
+}
+
+/* has formatting for div having */
+div {
+	width:200px;
+	height:200px;
+	margin:50px;
+	float:left;
+}
+#normalDiv {
+	background-color:yellow;
+	border:solid 1px black;
+}
+
+#rotateDiv {
+	background-color:lightgreen;
+	/* rotate clockwise 20 degrees */
+	-ms-transform: rotate(20deg); /* IE 9 */
+    -webkit-transform: rotate(20deg); /* Safari */
+    transform: rotate(20deg); /* Standard syntax */
+}
+
+#scaleDiv {
+	margin-top:250px;
+	background-color:lightgreen;
+	/* scale : two times of its original width, and three times of its original height */
+	-ms-transform: scale(2,3); /* IE 9 */
+    -webkit-transform: scale(2,3); /* Safari */
+    transform: scale(2,3); /* Standard syntax */
+}
+
+#skewXDiv {
+	background-color:lightgreen;
+	/* skewed 20 degrees along the X-axis */
+	-ms-transform: skewX(20deg); /* IE 9 */
+	-webkit-transform: skewX(20deg); /* Safari */
+	transform: skewX(20deg);/* Standard syntax */
+}
+
+#skewYDiv {
+	background-color:lightgreen;
+	/* skewed 20 degrees along the Y-axis */
+	-ms-transform: skewY(20deg); /* IE 9 */
+	-webkit-transform: skewY(20deg); /* Safari */
+	transform: skewY(20deg);/* Standard syntax */
+}
+
+#skewDiv {
+	background-color:lightgreen;
+	/* skewed 20 degrees along the X-axis, and 10 degrees along the Y-axis */
+	-ms-transform: skew(20deg,10deg); /* IE 9 */
+    -webkit-transform: skew(20deg,10deg); /* Safari */
+    transform: skew(20deg,10deg); /* Standard syntax */
+}
