@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Form</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style1.css" type="text/css">
+		<script type="text/javascript" src="js1.js"></script>
+		</head>
+    <body>
+		<header><h2>Registration</h2></header>
+  		<section>
+		<center>
+  			<br/><br/>
+			<form class="regForm" name="myform">
+				<table>
+					<tr>
+						<td><span>*</span> First Name : </td>
+						<td><input type="text" placeholder="Enter First Name" id="fName"/></td>
+					</tr>
+					<tr>
+						<td><span>*</span> Last Name : </td>
+						<td><input type="text" placeholder="Enter Last Name" id="lName"/></td>
+					</tr>
+					<tr>
+						<td><span>*</span> Password : </td>
+						<td><input type="password" placeholder="Enter password" id="passwd"/></td>
+					</tr>
+					<tr>
+						<td><span>*</span> Re-enter Password : </td>
+						<td><input type="password" placeholder="Re-enter password" id="reEnterPasswd"/></td>
+					</tr>
+					<tr>
+						<td><span>*</span> Age : </td>
+						<td><input type="text" placeholder="Enter age" id="age"/></td>
+					</tr>
+					<tr>
+						<td>State : </td>
+						<td>
+							<select id="State" onchange="fillCity();" onclick="fillCity();">
+								<option value="-1">- Select state -</option>
+								<option value="1">Rajasthan</option>
+								<option value="2">MP</option>
+								<option value="3">UP</option>
+								<option value="4">Maharashtra</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>City : </td>
+						<td>
+							<select id="City" name="City">
+								<option>- Select city -</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td id="addrLine">Address Line1 : </td>
+						<td>
+							<textarea rows="3" cols="21" placeholder="Enter Address" id="addr"></textarea>
+						</td>
+					</tr>
+				</table>
+				<input type="checkbox" id="acceptCondition" onclick="enableButton();"/>I accept condition<br/><br/>
+				<input id="submitButton" type="button" value="Create" disabled onclick="validate();" />
+			</form>
+			</center>
+  		</section>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
