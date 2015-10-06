@@ -1,12 +1,22 @@
+		
 		function validate()
 		{
-			if (validateFname() && validateLname() && validatePassword() && validateReEnterPassword() && validateAge())
+			var msg = "";
+			msg += validateFname();
+			msg += validateLname();
+			msg += validatePassword();
+			msg += validateReEnterPassword();
+			msg += validateAge();
+			if (msg.length>0)
+			{
+				alert(msg);
+				return false;
+			}	
+			else
 			{
 				alert("User created successfully");
 				return true;
 			}
-			else
-				return false;
 		}
 	
 	
@@ -17,17 +27,15 @@
 			// checks if first name is empty or not
 			if ( txt == "")  /* txt == "" || txt.length == 0 || txt == null */
 			{  
-				alert("Please enter First Name"); 
-				return false;
+				return "Please enter First Name\n";
 			}
 			// checks that firstname should contain only alphabets 
 			else if( !txt.match(letters) )  
 			{  
-				alert("Only alphabets are allowed in first name");	
-				return false;
+				return "Only alphabets are allowed in first name\n";
 			}
 			else 
-				return true;
+				return "";
 		} 
 
 		
@@ -38,16 +46,15 @@
 			// checks if last name is empty or not
 			if ( txt == "") 
 			{  
-				alert("Please enter Last Name"); 	
+				return "Please enter Last Name\n";
 			}
 			// checks that last name should contain only alphabets
 			else if( !txt.match(letters) )  
 			{  
-				alert("Only alphabets are allowed in last name");				
-				return false;
+				return "Only alphabets are allowed in last name\n";
 			}
 			else 
-				return true;
+				return "";
 		}
 		
 		
@@ -57,16 +64,15 @@
 			// checks if password is empty or not
 			if ( passwd == "")
 			{  
-				alert("Please enter password"); 	
+				return "Please enter password\n";			
 			}
 			//checks that password should have minimum 8 characters
 			else if( passwd.length < 8 )
 			{  
-				alert("Password should be of minimum 8 characters");  
-				return false;
+				return "Password should be of minimum 8 characters\n";
 			}
 			else 
-				return true;
+				return "";
 		}
 		
 		
@@ -77,16 +83,15 @@
 			// checks if re enter password field is empty or not
 			if ( reEnterPasswd == "")  
 			{  
-				alert("Please enter password in re enter passwd field"); 	
+				return "Please enter password in re enter passwd field\n";
 			}
 			// checks if password matches re entered password
 			else if( passwd != reEnterPasswd )
 			{  
-				alert("Password doesnot match");				
-				return false;
+				return "Password doesnot match\n";
 			}
 			else 
-				return true;
+				return "";
 		}
 		
 		
@@ -97,17 +102,15 @@
 			// checks if age is empty or not
 			if ( age == "")
 			{  
-				alert("Please enter age"); 	
-				return false;
+				return "Please enter age\n";
 			}
 			// checks if age contains only numbers and dot
 			else if(!age.match(numbers))  
 			{  
-				alert("Please enter numeric value in age"); 
-				return false;
+				return "Please enter numeric value in age\n";
 			}
 			else 
-				return true;  
+				return "";
 		}
 
 		
