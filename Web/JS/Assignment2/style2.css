@@ -1,0 +1,76 @@
+/* assigns formatting to body */
+body {
+	margin:0 auto;
+	width:700px;
+	background:#FFF;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+}
+
+/* assigns formatting to header */
+header {
+	margin-top:40px;
+    background: #D8F1DD;
+    height: 65px;
+    padding-left: 50px;
+    padding-bottom: 25px;
+    color: teal;
+    font-family: sans-serif;
+    //font-size: 30px;
+    font-weight: bold;
+    border: #5F8C8E solid 2px;
+}
+
+/* assigns formatting to section */
+section {
+	background-color: #DCE2DD;
+}
+
+/* assigns formatting to all input tags */
+input {
+	border:1px solid black;
+	width:150px;
+	height:20px;
+}
+
+/* assigns formatting to td of table with class name = min and class name = max */
+.min, .max {
+	width:100px;
+}
+
+/* assigns formatting to div */
+#box {
+	width:400px;
+	height:500px;
+}
+
+/* assigns formatting to td of table with id = table1 */
+#table1 td {
+	width:55px;
+}
+
+/* assigns formatting to all buttons */
+#but, #submitForm {
+	width: 100px;
+	border-radius:5px;
+}
+
+/* assigns formatting to td of rangeTable displaying name */
+#nameCol {
+	border-right:2px solid black;
+}
+
+/* assigns formatting to td of rangeTable */
+.rangeTable td {
+	border-bottom:1px solid black;
+	min-width: 22px;
+}
+
+/* assigns formatting to rangeTable */
+.rangeTable {
+	border-top:2px solid black;
+	border-right:2px solid black;
+	border-left:2px solid black;
+	border-bottom:1px solid black;
+}
