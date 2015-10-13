@@ -1,0 +1,46 @@
+
+@font-face {
+	font-family: 'Caudex-Regular';
+	src: url('../fonts/Caudex-Regular.eot');
+	src: local('☺'),  url('../fonts/Caudex-Regular.woff') format('woff'),  url('../fonts/Caudex-Regular.ttf') format('truetype'),  url('../fonts/Caudex-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Muli-Light';
+	src: url('../fonts/Muli-Light.eot');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ManicMondayBold';
+	src: url('../fonts/ManicMondayBold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HandveticaNeueRegularTrial';
+	src: url('../fonts/Handvetica Neue Regular Trial.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+iframe {
+	overflow:hidden;
+}
+
+body {
+	background: url(../images/bg-body.jpg) repeat left top;
+	font-family: 'Muli-Light';
+	margin: 0;	
+}
+
+/* assigns formatting to about us section */
+#aboutSection {
+	height:350px;
+	font-family: 'Muli-Light';
+	padding:0px 250px 0px 250px;	
+}
+

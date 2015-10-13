@@ -1,0 +1,70 @@
+
+@font-face {
+	font-family: 'Caudex-Regular';
+	src: url('../fonts/Caudex-Regular.eot');
+	src: local('☺'),  url('../fonts/Caudex-Regular.woff') format('woff'),  url('../fonts/Caudex-Regular.ttf') format('truetype'),  url('../fonts/Caudex-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Muli-Light';
+	src: url('../fonts/Muli-Light.eot');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ManicMondayBold';
+	src: url('../fonts/ManicMondayBold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HandveticaNeueRegularTrial';
+	src: url('../fonts/Handvetica Neue Regular Trial.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+iframe {
+	overflow:hidden;
+}
+
+body {
+	background: url(../images/bg-body.jpg) repeat left top;
+	font-family: 'Muli-Light';
+	margin: 0;
+}
+
+/* assigns formatting to search result section */
+#searchResult {
+	width: 1000px; 
+    height: 600px; 
+    padding: 20px; 
+	margin:100px;
+}
+
+/* assigns formatting to td in search result section */
+#searchResult table td{
+	width:150px;
+	font-family: 'Muli-Light';
+	font-size:15px;
+}
+
+/* assigns formatting to elements having class = editInput in search result section */
+#searchResult .editInput {
+	width:250px;
+	height:25px;
+}
+
+/* assigns formatting to edit detail button */
+#editDetailsBtn {
+	width:100px;
+	height:30px;
+	border:1px solid #5B6432;
+	border-radius:5px;
+	background-color: #5B6432;
+	color:#C9BEA2;
+	font-family: 'Caudex-Regular';
+}

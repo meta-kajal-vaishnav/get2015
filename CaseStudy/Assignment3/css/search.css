@@ -1,0 +1,80 @@
+
+@font-face {
+	font-family: 'Caudex-Regular';
+	src: url('../fonts/Caudex-Regular.eot');
+	src: local('☺'),  url('../fonts/Caudex-Regular.woff') format('woff'),  url('../fonts/Caudex-Regular.ttf') format('truetype'),  url('../fonts/Caudex-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Muli-Light';
+	src: url('../fonts/Muli-Light.eot');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ManicMondayBold';
+	src: url('../fonts/ManicMondayBold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HandveticaNeueRegularTrial';
+	src: url('../fonts/Handvetica Neue Regular Trial.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+iframe {
+	overflow:hidden;
+}
+
+body {
+	background: url(../images/bg-body.jpg) repeat left top;
+	font-family: 'Muli-Light';
+	margin: 0;
+	width:100%
+}
+
+/*--------------------------- assigns formatting to search section -------------------------*/
+#searchSection {
+	height:800px;
+	font-family: 'Muli-Light';
+	margin-left:100px;
+	font-size:15px;
+	font-weight:bold;
+}
+
+#searchSection ul{
+	list-style:none;
+}
+
+#searchSection li{
+	display:inline-block;
+	width:200px;
+	margin-right:100px;
+	margin-top:100px;
+}
+
+#searchSection img{
+	width:200px;
+	z-index:-100;
+	border:3px solid #5F5A4F;
+}
+
+#searchSection img:hover {
+	border:1px solid #5F5A4F;
+}
+
+#searchSection input {
+	width:100px;
+	height:30px;
+	font-size:15px;
+	font-weight:bold;
+	border:1px solid #C9BEA2;
+	border-radius:5px;
+	background-color: #C9BEA2;
+	color:#5F5A4F;
+}

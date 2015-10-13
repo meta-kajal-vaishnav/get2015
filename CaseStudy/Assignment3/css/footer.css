@@ -1,0 +1,201 @@
+
+@font-face {
+	font-family: 'Caudex-Regular';
+	src: url('../fonts/Caudex-Regular.eot');
+	src: local('☺'),  url('../fonts/Caudex-Regular.woff') format('woff'),  url('../fonts/Caudex-Regular.ttf') format('truetype'),  url('../fonts/Caudex-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Muli-Light';
+	src: url('../fonts/Muli-Light.eot');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ManicMondayBold';
+	src: url('../fonts/ManicMondayBold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HandveticaNeueRegularTrial';
+	src: url('../fonts/Handvetica Neue Regular Trial.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*body {
+	background: url(../images/bg-body.jpg) repeat left top;
+	font-family: 'Muli-Light';
+	margin: 0;
+}*/
+
+/*------------------------------ FOOTER ------------------------------*/
+footer {
+	clear: both;
+	font-family: 'Caudex-Regular';
+	margin: 0 auto;
+	padding: 10px 0px 20px 200px;
+	background: url(../images/bg-pattern.jpg) repeat  center bottom;
+	height:350px;
+	color: #474747;
+}
+
+/* assigns formatting to footer section */
+.footerSection {
+	float: left;
+	background: url(../images/border3.png) repeat-y left;
+	width: 288px;
+	padding: 20px 30px 0 20px;
+	overflow: hidden;
+	min-height: 350px;  
+}
+
+/* assigns formatting to element having class as first infooter section */
+#first {
+	background: none;
+	padding-left: 8%;
+}
+
+/* assigns formatting to h3 in footer section */
+.footerSection  h3 {
+	background: url(../images/border4.png) repeat-x 1px bottom;
+	color: #836544;
+	font-family: 'Caudex-Regular';
+	font-weight: normal;
+	margin-bottom: 12px;
+	padding-bottom: 12px;
+	text-transform: uppercase;
+}
+
+/* assigns formatting to p in footer section */
+footer p {
+	color: #5c5b58;
+	font-size: 12px;
+	line-height: 24px;
+	margin: 0;
+}
+
+/* assigns formatting to anchor tag in footer section */
+footer p a {
+	color: #5c5b58;
+	text-decoration: none;
+}
+
+/* assigns formatting to anchor tag in footer section on hover */
+footer p a:hover {
+	color: #887c6c;
+}
+
+/* assigns formatting to header in footer section */
+footer>header {
+	background: url(../images/border.png) no-repeat center top;
+} 
+
+/* assigns formatting to blog in footer section */
+.blog {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* assigns formatting to li of blog in footer section */
+.blog li {
+	background: url(../images/border4.png) repeat-x 1px top;
+	margin-bottom: 12px;
+	padding-top: 13px;
+}
+
+/* assigns formatting to first child of li in blog in footer section */
+.blog li:first-child {
+	background: none;
+	padding-top: 0;
+}
+
+/* assigns formatting to span of li in blog */
+.blog li span {
+	display: block;
+	font-size: 12px;
+	font-style: italic;
+}
+
+/* assigns formatting to anchor tag in li of blog */
+.blog li a {
+	display: block;
+	font-family: 'Caudex-Regular';
+	font-size: 14px;
+}
+
+/* assigns formatting to elements having class as info */
+.info {
+	font-size: 13px;
+	line-height: 23px;
+	margin-bottom: 30px;
+}
+
+/* assigns formatting to td in info class */
+.info td {
+	padding: 0;
+}
+
+/* assigns formatting to first child of td in info class */
+.info tr td:first-child {
+	width: 100px;
+}
+
+/* assigns formatting to anchor tag of connect */
+#connect a {
+	background: url(../images/icons.png) no-repeat;
+	display: inline-block;
+	height: 26px;
+	width: 25px;
+	margin-right: 5px;
+}
+
+#connect a.facebook {
+	background-position: -35px 0;
+}
+
+#connect a.twitter {
+	background-position: -35px -38px;
+}
+
+#connect a.googleplus {
+	background-position: -35px -77px;
+}
+
+#connect a.facebook:hover {
+	background-position: 0 0;
+}
+
+#connect a.twitter:hover {
+	background-position: 0 -38px;
+}
+
+#connect a.googleplus:hover {
+	background-position: 0 -77px;
+}
+
+/* assigns formatting to p of footer section */
+.footerSection  p {
+	font-size: 13px;
+	line-height: 24px;
+	margin: 0;
+}
+
+/* assigns formatting to anchor tag of footer section */
+.footerSection  p a {
+	color: #977d5d;
+	text-decoration: none;
+}
+
+/* assigns formatting to anchor tag of footer section on hover */
+.footerSection  p a:hover {
+	color: #6d773a;
+}
+
+
+

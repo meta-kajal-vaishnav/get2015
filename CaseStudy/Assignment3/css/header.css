@@ -1,0 +1,106 @@
+
+@font-face {
+	font-family: 'Caudex-Regular';
+	src: url('../fonts/Caudex-Regular.eot');
+	src: local('☺'),  url('../fonts/Caudex-Regular.woff') format('woff'),  url('../fonts/Caudex-Regular.ttf') format('truetype'),  url('../fonts/Caudex-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Muli-Light';
+	src: url('../fonts/Muli-Light.eot');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ManicMondayBold';
+	src: url('../fonts/ManicMondayBold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HandveticaNeueRegularTrial';
+	src: url('../fonts/Handvetica Neue Regular Trial.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+img {
+	border: 0;
+}
+
+/* assigns formatting to header */
+header {
+	background: linear-gradient(to right, #5B6432 , #080808);
+	height: 120px;
+}
+
+/* assigns formatting to anchor tag of header */
+header a{
+	text-decoration:none;
+	color: #e4dec0;
+}
+
+/* assigns formatting to header section */
+.headerSection {
+	width:350px;
+	height:95px;
+	margin-left:150px;
+}
+
+/* assigns formatting to logo in header section */
+#logo {
+	float: left;	
+}
+
+/* assigns formatting to h1 in logo in header section */
+#logo h1{
+	font-size:45px;
+	font-family:HandveticaNeueRegularTrial;
+	color:#fff;
+	font-weight:bold;
+}
+
+/* assigns formatting to login section */
+#login{
+	float: right;
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+    color: #e4dec0;
+}
+
+/*------------------------------ Navigation ------------------------------*/
+nav {
+	background-color:#C9BEA2;
+	height: 31px;
+}
+nav ul {
+	position:relative;
+    top: -15px;
+	list-style: none;
+	display: inline-block;
+	background-color:#C9BEA2;
+}
+nav li {
+	float: left;
+	font-size: 14pt;
+	width: 300px;
+	height: 30px;
+	text-align: center;
+}
+nav li a {
+	background-position: -144px 0;
+	color: #5B6432;
+	font-family: 'Caudex-Regular';
+	font-size: 14px;
+	text-decoration: none;
+	text-shadow: 1px 1px #3d3413;
+	text-transform: uppercase;
+}
+
+nav li:hover {
+	background-color:#B7AB8C;
+}
