@@ -14,10 +14,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author kajal
- */
-
 /* Class to map the java objects to json objects and vice-versa  */
 public class JacksonMapper {
 	/**
