@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 /* Class to map the java objects to json objects and vice-versa  */
 public class JacksonMapper {
 	/**
@@ -32,13 +33,11 @@ public class JacksonMapper {
 		ObjectMapper mapper = new ObjectMapper();
 
 		try {
-			File json = new File("employee.json");
-
-			Employee employee1 = mapper.readValue(json, Employee.class);
+			File jsonFile = new File("employee.json");
+			Employee employee1 = mapper.readValue(jsonFile, Employee.class);
 			System.out.println("Java object created from JSON String :");
-			System.out.println(employee1.getEmployeeName());
-			System.out.println(employee1.getEmployee_id());
-			System.out.println(employee1.getDate_Of_Birth());
+			System.out.println(employee1);
+			
 
 		} catch (JsonGenerationException ex) {
 			ex.printStackTrace();
@@ -52,9 +51,14 @@ public class JacksonMapper {
 
 	/* Java method to convert Java Object into JSON String with help of Jackson API */
 	public static void toJSON() {
-		Employee employee = new Employee("Kajal", 12, "kajal@gmail.com",
-				"03-10-2015");
-
+		Employee employee = new Employee();
+		employee.setEmployeeName("Kajal");
+		employee.setEmployee_id(678);
+		employee.setCtcPerAnnum(18000);
+		employee.setDate_Of_Birth("05-07-1993");
+		employee.setDate_Of_Joining("03-08-2015");
+		employee.setEmail_id("kajalv@gmail.com");
+		
 		// our bridge from Java to JSON and vice versa
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -73,6 +77,5 @@ public class JacksonMapper {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-	}
-	
+	}	
 }
