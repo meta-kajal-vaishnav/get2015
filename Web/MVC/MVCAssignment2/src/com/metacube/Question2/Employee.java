@@ -13,11 +13,10 @@ public class Employee {
 	int employee_id;
 	@JsonIgnore
 	String email_id;
-	
 	@JsonIgnore
 	String date_Of_Birth;
+	@JsonIgnore
 	String date_Of_Joining;
-	
 	@JsonIgnore
 	int ctcPerAnnum;
 
@@ -26,6 +25,7 @@ public class Employee {
 	 * Default constructor
 	 */
 	public Employee() {
+		date_Of_Birth = "05-07-1993";
 	}
 	
 	/**
@@ -75,14 +75,6 @@ public class Employee {
 		this.email_id = email_id;
 	}
 
-	@Override
-	public String toString() {
-		return "Employee [employeeName=" + employeeName + ", employee_id="
-				+ employee_id + ", email_id=" + email_id + ", date_Of_Birth="
-				+ date_Of_Birth + ", date_Of_Joining=" + date_Of_Joining
-				+ ", ctcPerAnnum=" + ctcPerAnnum + "]";
-	}
-
 	/**
 	 * @return the date_Of_Birth
 	 */
@@ -102,6 +94,7 @@ public class Employee {
 	/**
 	 * @return the date_Of_Joining
 	 */
+	@JsonProperty
 	public String getDate_Of_Joining() {
 		return date_Of_Joining;
 	}
@@ -110,6 +103,7 @@ public class Employee {
 	 * @param date_Of_Joining
 	 *            the date_Of_Joining to set
 	 */
+	@JsonIgnore
 	public void setDate_Of_Joining(String date_Of_Joining) {
 		this.date_Of_Joining = date_Of_Joining;
 	}
@@ -128,5 +122,13 @@ public class Employee {
 	 */
 	public void setCtcPerAnnum(int ctcPerAnnum) {
 		this.ctcPerAnnum = ctcPerAnnum;
+	}
+	
+	@Override
+	public String toString() {
+		return "Employee [employeeName=" + employeeName + ", employee_id="
+				+ employee_id + ", email_id=" + email_id + ", date_Of_Birth="
+				+ date_Of_Birth + ", date_Of_Joining=" + date_Of_Joining
+				+ ", ctcPerAnnum=" + ctcPerAnnum + "]";
 	}
 }
