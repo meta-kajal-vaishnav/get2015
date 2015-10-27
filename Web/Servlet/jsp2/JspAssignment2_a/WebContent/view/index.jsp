@@ -37,7 +37,7 @@
 					</tr>
 				</table>
 				<input type="checkbox" id="acceptCondition" onclick="enableButton();"/>I accept condition<br/><br/>
-				<input id="submitButton" type="submit" value="Create" disabled onsubmit="validate();" />
+				<input id="submitButton" type="submit" value="Create" disabled onclick="return validate();" />
 			</form>
 			</center>
   		</section>
