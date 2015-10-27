@@ -9,7 +9,7 @@
 		<script type="text/javascript" src="../js/js1.js"></script>
 	</head>
 	<body>
-		<header><h2>Registration</h2></header>
+		<header><h2>Log In</h2></header>
   		<section>
 		<center>
   			<br/><br/>
@@ -17,14 +17,14 @@
 				<table>
 					<tr>
 						<td><span>*</span> Username : </td>
-						<td><input type="text" placeholder="Enter username" id="username" name="userName"/></td>
+						<td><input type="text" placeholder="Enter username" id="username" name="username"/></td>
 					</tr>
 					<tr>
 						<td><span>*</span> Password : </td>
 						<td><input type="password" placeholder="Enter password" id="passwd" name="password"/></td>
 					</tr>
 				</table>
-				<input id="submitButton" type="submit" value="Create" onsubmit="validate();" />
+				<input id="submitButton" type="submit" value="Login" onclick="return validate();" />
 			</form>
 			</center>
   		</section>
