@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+$(document).ready(function(){
+	$('select#empName').on('change',function(){
+	var riddhi = ["riddhi@gmail.com","10-07-1994","Address1"];
+	var kajal = ["kajal@gmail.com","05-07-1993","Address2"];
+	//var empDetails =[riddhi,kajal];
+	var newArr = new Array();
+	var detail = document.getElementById("empDetails");
+	//var empDetails1 = {"Riddhi","riddhi@gmail.com","10-07-1994","Address1"};
+	
+	$.ajax({ 
+		type: "POST",
+		url: "question2.html",
+		data: "document.getElementById('empName').value", 
+		success: callback, 
+		dataType: "html"
+		});
+	});
+	
+	
+	callback = function(data, newArr, riddhi, kajal) { 
+		alert("Success");
+		switch(data){
+			
+			case '1':alert('Name='+riddhi+'Email = '+riddhi[0]+'DOB = '+riddhi[1]+'Addresss = '+riddhi[2]);//newArr = riddhi;//detail.html('Name='+data);
+				break;
+			case '2': //newArr = kajal;//detail.html('Name='+data);
+				break;
+		}
+		
+	}
+});
+</script>
+</head>
+<body>
+	<select id="empName">
+		<option>--Select name--</option>
+		<option value="1">Riddhi</option>
+		<option value="2">Kajal</option>
+		<option value="3">Parul</option>
+	</select>
+	<div id="empDetails"></div>
+</body>
+</html>
