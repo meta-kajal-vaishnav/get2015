@@ -121,10 +121,10 @@ public class SearchDBHelper {
 					objCar.setMake(rs.getString("make"));
 					objCar.setModel(rs.getString("model"));
 					objCar.setAC(rs.getBoolean("ac"));
-					objCar.setPowerSteering(rs.getBoolean("power_stering"));
+					objCar.setPowerSteering(rs.getBoolean("power_steering"));
 					objCar.setAccessoryKit(rs.getBoolean("accessory_kit"));
-					objCar.setEngineInCC(rs.getString("engineIncc"));
-					objCar.setFuelCapacity(rs.getDouble("fuelcapacity"));
+					objCar.setEngineInCC(rs.getString("engine_in_cc"));
+					objCar.setFuelCapacity(rs.getDouble("fuel_capacity"));
 					objCar.setMilage(rs.getDouble("milage"));
 					objCar.setPrice(rs.getDouble("price"));
 					objCar.setRoadTax(rs.getDouble("road_tax"));
@@ -199,10 +199,10 @@ public class SearchDBHelper {
 					objCar.setMake(rs.getString("make"));
 					objCar.setModel(rs.getString("model"));
 					objCar.setAC(rs.getBoolean("ac"));
-					objCar.setPowerSteering(rs.getBoolean("power_stering"));
+					objCar.setPowerSteering(rs.getBoolean("power_steering"));
 					objCar.setAccessoryKit(rs.getBoolean("accessory_kit"));
-					objCar.setEngineInCC(rs.getString("engineIncc"));
-					objCar.setFuelCapacity(rs.getDouble("fuelcapacity"));
+					objCar.setEngineInCC(rs.getString("engine_n_cc"));
+					objCar.setFuelCapacity(rs.getDouble("fuel_capacity"));
 					objCar.setMilage(rs.getDouble("milage"));
 					objCar.setPrice(rs.getDouble("price"));
 					objCar.setRoadTax(rs.getDouble("road_tax"));
