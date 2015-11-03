@@ -1,7 +1,6 @@
 package com.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,51 +25,53 @@ public class Registration extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		 Connection con = null;
-	        Statement stmt = null;
-	        ResultSet rs = null;
-	        ConnectionUtil conUtil = new ConnectionUtil();
-	        RequestDispatcher rd = null;
-	        con = conUtil.getConnection();
-	        int rowCount = 0;
-	        String username = request.getParameter("username");
-	        String password = request.getParameter("password");
-	        String query = "SELECT username, password FROM Register WHERE username = '" + username + "' AND password = '" + password + "'";
-	        try {
-	            stmt = con.createStatement();
-	            if (stmt.execute(query)) {
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ConnectionUtil conUtil = new ConnectionUtil();
+		RequestDispatcher rd = null;
+		con = conUtil.getConnection();
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String query = "SELECT password FROM Register WHERE username = '"+ username + "'";
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+			if(rs.next())
+			{
+				if (rs.getString("password").equals(password)) {
 					request.setAttribute("Message", "User Successfully logged in");
-					rd=request.getRequestDispatcher("/view/Success.jsp");
+					rd = request.getRequestDispatcher("/view/Success.jsp");
+					rd.forward(request, response);
+				} else {
+					request.setAttribute("Message", "Incorrect Password");
+					rd = request.getRequestDispatcher("/view/Error.jsp");
 					rd.forward(request, response);
 				}
-	            else
-	            {
-	            	request.setAttribute("Message", "User Dont Exists");
-					rd=request.getRequestDispatcher("/view/Error.jsp");
-					rd.forward(request, response);
-	            }
+			}else {
+				request.setAttribute("Message", "Incorrect Username");
+				rd = request.getRequestDispatcher("/view/Error.jsp");
+				rd.forward(request, response);
+			}
 
-	        }
-	        catch (SQLException e) {
-	            request.setAttribute("Message", (Object)e.toString());
-	            rd = request.getRequestDispatcher("/view/Error.jsp");
-	            rd.forward((ServletRequest)request, (ServletResponse)response);
-	        }
-	        finally {
-	            try {
-	                if (con != null) {
-	                    con.close();
-	                }
-	                if (stmt != null) {
-	                    stmt.close();
-	                }
-	                if (rs != null) {
-	                    rs.close();
-	                }
-	            }
-	            catch (SQLException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
+		} catch (SQLException e) {
+			request.setAttribute("Message", (Object) e.toString());
+			rd = request.getRequestDispatcher("/view/Error.jsp");
+			rd.forward((ServletRequest) request, (ServletResponse) response);
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
