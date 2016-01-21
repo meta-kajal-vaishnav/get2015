@@ -1,0 +1,21 @@
+#empForm {
+	margin-left:100px;
+}
+
+#addEmpTable td {
+	width:230px;
+	padding:10px;
+}
+
+option {
+	width:230px;
+}
+
+#addEmpButton {
+	width: 150px; 
+	margin-left: 150px;	
+}
+
+nav {
+	color:white;
+}

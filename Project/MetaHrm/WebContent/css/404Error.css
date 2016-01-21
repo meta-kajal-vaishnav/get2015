@@ -1,0 +1,77 @@
+body {
+	background: url('../images/background.jpg') no-repeat center center
+		fixed;
+	background-size: cover;
+}
+
+.navbar {
+	background-color: rgba(0, 0, 0, 0.1);
+	font-size: 20px;
+	border: none;
+	height: 10%;
+}
+
+.navbar-brand, .navbar-header {
+	color: #fff;
+	font-size: 30px;
+	font-family: 'Philosopher', sans-serif;
+	margin-left: 2%;
+}
+
+.navbar-default .navbar-form {
+    border:none ;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+	color: #f2f2f2;
+}
+
+.navbar-default .navbar-brand {
+	color: #f2f2f2;
+}
+
+.nav .navbar-nav .navbar-right .right li {
+	color: #ffffff;
+}
+
+.active {
+	background-color: #f2f2f2;
+}
+
+.navbar-nav {
+	text-decoration: none;
+	display: table;
+	float: none;
+	margin: 0 auto;
+	table-layout: fixed;
+}
+
+.navbar-nav li a {
+	color: #CEA359;
+}
+
+.homenav {
+	font-size: 1.5em;
+}
+
+.containermiddle {
+	min-height:550px;
+	width:90%;
+	margin-top:5%;
+	margin-bottom:5%;
+	padding:2%;
+	color:#ffffff;
+	font-size: 40px;
+}
+
+footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	height: 10%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	background-color: rgba(0, 0, 0, 0.5);
+	text-align: center;
+	color: white;
+}
