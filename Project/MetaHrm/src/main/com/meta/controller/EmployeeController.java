@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.ManagedArray;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -108,6 +109,7 @@ public class EmployeeController {
 			@ModelAttribute("objOfEmployee") EmployeeBean sessionEmployeeBean) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("objOfEmployee", sessionEmployeeBean);
+		modelAndView.addObject("employeeBean", employeeBean);
 		List<EmployeeBean> employeeBeanList = prepareEmployeeBeanListFromModel(employeeService.getAllEmployeesList());
 		model.addAttribute("listOfAllEmployeeBeans", employeeBeanList);
 		modelAndView.addAllObjects(model);
@@ -118,11 +120,14 @@ public class EmployeeController {
 	@RequestMapping(value = "/viewAttendence", method = RequestMethod.GET)
 	public ModelAndView viewAttendence(ModelMap model,
 			@ModelAttribute("attendenceBean") AttendenceBean attendenceBean,
-			@ModelAttribute("objOfEmployee") EmployeeBean sessionEmployeeBean) {
+			@ModelAttribute("objOfEmployee") EmployeeBean sessionEmployeeBean,
+			@RequestParam("pageNumber") int pageNumber) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("objOfEmployee", sessionEmployeeBean);
-		//List<AttendenceBean> attendenceBeanList = prepareAttendenceBeanListFromModel(attendenceService.getAttendenceList(employeeId));
-		//model.addAttribute("listOfAttendence", attendenceBeanList);
+		Employee employeeModel = prepareEmployeeModelFromBean(sessionEmployeeBean);
+		List<AttendenceBean> attendenceBeanList = prepareAttendenceBeanListFromModel(
+				attendenceService.getAttendenceList(employeeModel, pageNumber));
+		model.addAttribute("listOfAttendence", attendenceBeanList);
 		modelAndView.addAllObjects(model);
 		modelAndView.setViewName("ViewAttendence");
 		return modelAndView;
@@ -139,7 +144,9 @@ public class EmployeeController {
 		Attendence attendenceModel = prepareAttendenceModelFromBean(attendenceBean);
 		attendenceModel.setStatus("P");
 		attendenceModel.setEmployee(employeeModel);
-		employeeModel.getAttendenceList().add(attendenceModel);
+		List<Attendence> attendenceModelList = attendenceService.getAllAttendence(employeeModel);
+		attendenceModelList.add(attendenceModel);
+		employeeModel.setAttendenceList(attendenceModelList);
 		employeeService.addEmployee(employeeModel);
 		Date inDate = attendenceService.getLatestAttendence(employeeModel);
 		System.out.println("after date "+inDate.toString());
@@ -180,16 +187,30 @@ public class EmployeeController {
 			@ModelAttribute("employeeBean") EmployeeBean employeeBean) {
 		String userName = request.getParameter("subordinates");
 		System.out.println("userName  kk "+userName);
-		Employee manager = employeeService.findByUserName(userName);
+		Employee subordinate = employeeService.findByUserName(userName);
 		employeeBean.setPassword("abcd");
 		employeeBean.setEnabled(true);
-		employeeBean.getManagers().add(manager);
+		//employeeBean.getManagers().add(manager);
 		EmployeeRole employeeRole = new EmployeeRole();
 		Employee employeeModel = prepareEmployeeModelFromBean(employeeBean);
+		
+//		List<Employee> subordinatesList = employeeService.getAllSubordinates(employeeModel);
+//		subordinatesList.add(subordinate);
+//		employeeModel.setSubordinates(subordinatesList);
+//		employeeService.addEmployee(employeeModel);
+		
+		List<Employee> subordinatesList = employeeService.getAllSubordinates(subordinate);
+		subordinatesList.add(employeeModel);
+		employeeModel.setSubordinates(subordinatesList);
+		employeeService.addEmployee(subordinate);
+		
+		
+//		manager.getSubordinates().add(employeeModel);
 		employeeRole.setRole("ROLE_"+request.getParameter("employeeType"));
 		employeeRole.setEmployee(employeeModel);
 		employeeBean.getUserRole().add(employeeRole);
 		employeeService.addEmployee(employeeModel);
+		//employeeService.addEmployee(manager);
 		
 		Gson gson = new Gson();
 	    String json = gson.toJson(prepareEmployeeBeanListFromModel(employeeService.getAllEmployeesList()));
@@ -233,6 +254,42 @@ public class EmployeeController {
 		return model;
 	}
 
+	@RequestMapping(value = "/deleteEmployee", method = RequestMethod.GET)
+	public ModelAndView deleteEmployee(HttpServletRequest request, 
+			@RequestParam("employeeId") int employeeId,
+			@ModelAttribute("employeeBean") EmployeeBean employeeBean) {
+		employeeService.deleteEmployee(employeeId);
+		return new ModelAndView("redirect:/viewSubordinates.html");
+	}
+	
+	@RequestMapping(value = "/viewEmployeeDetails", method = RequestMethod.GET)
+	public ModelAndView viewEmployeeDetails(HttpServletRequest request, 
+			@RequestParam("username") String username,
+			@ModelAttribute("objOfEmployee") EmployeeBean sessionEmployeeBean,
+			@ModelAttribute("employeeBean") EmployeeBean employeeBean) {
+		ModelAndView model = new ModelAndView();
+		employeeBean = prepareEmployeeBeanFromModel(employeeService.findByUserNameNew(username));
+		model.addObject("employeeBean", employeeBean);
+		List<EmployeeBean> employeeBeanList = prepareEmployeeBeanListFromModel(employeeService.getAllEmployeesList());
+		model.addObject("listOfAllEmployeeBeans", employeeBeanList);
+		model.setViewName("ViewSubordinates");
+		return model;
+	}
+	
+	@RequestMapping(value = "/editDetails", method = RequestMethod.POST)
+	public ModelAndView editDetailsOfEmployee(@ModelAttribute("employeeBean") EmployeeBean employeeBean,
+			@ModelAttribute("objOfEmployee") EmployeeBean sessionEmployeeBean) {
+		ModelAndView model = new ModelAndView();
+		System.out.println("Nai bean id: "+employeeBean.getEmployeeId());
+		employeeBean.setEnabled(true);
+		employeeService.addEmployee(prepareEmployeeModelFromBean(employeeBean));
+		model.addObject("employeeBean", employeeBean);
+		List<EmployeeBean> employeeBeanList = prepareEmployeeBeanListFromModel(employeeService.getAllEmployeesList());
+		model.addObject("listOfAllEmployeeBeans", employeeBeanList);
+		model.setViewName("ViewSubordinates");
+		return model;
+	}
+	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutPage(@ModelAttribute("objOfEmployee") EmployeeBean sessionEmployeeBean,
 			HttpServletRequest request,

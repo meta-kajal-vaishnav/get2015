@@ -41,7 +41,13 @@ public class AttendenceServiceImpl implements AttendenceService {
     
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public List<Attendence> getAttendenceList(int employeeId) {
-    	return attendenceDao.getAttendenceList(employeeId);
+    public List<Attendence> getAttendenceList(Employee employeeModel, int pageNumber) {
+    	return attendenceDao.getAttendenceList(employeeModel, pageNumber);
+    }
+    
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public List<Attendence> getAllAttendence(Employee employeeModel) {
+    	return attendenceDao.getAllAttendence(employeeModel);
     }
 }

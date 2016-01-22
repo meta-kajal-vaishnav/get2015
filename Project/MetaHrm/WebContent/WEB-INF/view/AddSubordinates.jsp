@@ -45,7 +45,7 @@
       <ul class="nav navbar-nav">
         <li><a href="#">Home</a></li>
         <li class="active"><a href="UserHomePage.html">Punch In/Out</a></li>
-        <li><a href="viewAttendence.html?employeeId=${objOfEmployee.getEmployeeId()}">View Attendence</a></li>
+        <li><a href="viewAttendence.html?pageNumber=0">View Attendence</a></li>
         <li><a href="addSubordinates.html">Add Subordinates</a></li>
         <li><a href="viewSubordinates.html">View Subordinates</a></li>
       </ul>

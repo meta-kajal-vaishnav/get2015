@@ -19,10 +19,23 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/subordinates.js"></script>
 <style type="text/css">
-#prevAttendence td{
- width:200px;
+#prevAttendence td {
+	width: 200px;
 }
 </style>
+<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						$(".pagination li a")
+								.click(
+										function() {
+											alert($(this).text());
+											window.location.href = "/MetaHrm/viewAttendence.html?pageNumber="
+													+ $(this).text();
+										});
+					});
+</script>
 </head>
 <body>
 	<c:url value="/j_spring_security_logout" var="logoutUrl" />
@@ -36,61 +49,73 @@
 		}
 	</script>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="/MetaHrm/index.html">MetaHrm</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li class="active"><a href="UserHomePage.html">Punch In/Out</a></li>
-        <li><a href="viewAttendence.html">View Attendence</a></li>
-        <li><a href="addSubordinates.html">Add Subordinates</a></li>
-        <li><a href="viewSubordinates.html">View Subordinates</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      	<c:if test="${pageContext.request.userPrincipal.name != null}">
-			<li>Welcome : ${pageContext.request.userPrincipal.name} | </li>
-			<li><a href="javascript:formSubmit()"> Logout</a></li>
-		</c:if>
-      </ul>
-    </div>
-  </div>
-</nav>
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/MetaHrm/index.html">MetaHrm</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a href="#">Home</a></li>
+				<li class="active"><a href="UserHomePage.html">Punch In/Out</a></li>
+				<li><a href="viewAttendence.html?pageNumber=0">View
+						Attendence</a></li>
+				<li><a href="addSubordinates.html">Add Subordinates</a></li>
+				<li><a href="viewSubordinates.html">View Subordinates</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<c:if test="${pageContext.request.userPrincipal.name != null}">
+					<li>Welcome : ${pageContext.request.userPrincipal.name} |</li>
+					<li><a href="javascript:formSubmit()"> Logout</a></li>
+				</c:if>
+			</ul>
+		</div>
+	</div>
+	</nav>
 
 
 	<br />
 	<br />
 	<div id="prevAttendence">
-	<table border="1">
-	<tr>
-		<th>Date [yyyy-MM-dd HH:mm]</th>
-		<th>Status</th>
-	</tr>
 		<c:choose>
-			<c:when test="${!objOfEmployee.getAttendenceList().isEmpty()}">
-				<c:forEach items="${objOfEmployee.getAttendenceList()}" var="attendenceObj">
+			<c:when test="${!listOfAttendence.isEmpty()}">
+				<table border="1">
 					<tr>
-						<td>
-							<fmt:formatDate value="${attendenceObj.getAttendenceDate()}"
-							pattern="yyyy-MM-dd HH:mm" var="attendenceDateTime" /> 
-							<c:out value="${attendenceDateTime}" />
-						</td>
-						<td>${attendenceObj.getStatus()}</td>
+						<th>Date [yyyy-MM-dd HH:mm]</th>
+						<th>Status</th>
 					</tr>
-				</c:forEach>
+					<c:forEach items="${listOfAttendence}" var="attendenceObj">
+						<tr>
+							<td><fmt:formatDate
+									value="${attendenceObj.getAttendenceDate()}"
+									pattern="yyyy-MM-dd HH:mm" var="attendenceDateTime" /> <c:out
+									value="${attendenceDateTime}" /></td>
+							<td>${attendenceObj.getStatus()}</td>
+						</tr>
+					</c:forEach>
+				</table>
+				<ul class="pagination">
+					<li class="disabled"><a
+						href="/MetaHrm/viewAttendence.html?page=1">First</a></li>
+					<li class="disabled"><a href="#">Prev</a></li>
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li class="active"><a href="#">Next</a></li>
+					<li class="active"><a href="#">Last</a></li>
+				</ul>
 			</c:when>
 			<c:otherwise>
-				<label>No Attendence found</label>
+				<label>No Attendence Found</label>
 			</c:otherwise>
 		</c:choose>
-		</table>
 	</div>
 </body>
 </html>

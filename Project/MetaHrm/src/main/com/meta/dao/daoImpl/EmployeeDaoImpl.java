@@ -9,12 +9,14 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import main.com.meta.dao.EmployeeDao;
+import main.com.meta.model.Attendence;
 import main.com.meta.model.Employee;
 
 /**
@@ -46,7 +48,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
         // Uncomment below lines for eagerly fetching of userProfiles if you want.
         for(Employee employee : empList){
             //Hibernate.initialize(employee.getUserRole());
-           // Hibernate.initialize(employee.getAttendenceList());
+            //Hibernate.initialize(employee.getAttendenceList());
             Hibernate.initialize(employee.getManagers());
             Hibernate.initialize(employee.getSubordinates());
         }
@@ -73,5 +75,34 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		} else {
 			return null;
 		}
+	}
+	
+	@Override
+	public Employee findByUserNameNew(String username) {
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList = sessionFactory.getCurrentSession().createCriteria(Employee.class)
+				.add(Restrictions.eq("username", username)).list();
+		for(Employee employee : employeeList){
+			Hibernate.initialize(employee.getAttendenceList());
+		}
+		if (employeeList.size() > 0) {
+			return employeeList.get(0);
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
+	public void deleteEmployee(int employeeId){
+		sessionFactory.getCurrentSession().delete(sessionFactory.getCurrentSession().get(Employee.class, employeeId));
+	}
+	
+	@Override
+	public List<Employee> getAllSubordinates(Employee employeeModel){
+		System.out.println("manager name:" +employeeModel.getEmployeeName());
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(
+				Employee.class);
+		crit.add(Restrictions.eq("managers", employeeModel));
+		return (List<Employee>) crit.list();
 	}
 }

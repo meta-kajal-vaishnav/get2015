@@ -77,7 +77,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="#">Home</a></li>
 				<li class="active"><a href="UserHomePage.html">Punch In/Out</a></li>
-				<li><a href="viewAttendence.html">View Attendence</a></li>
+				<li><a href="viewAttendence.html?pageNumber=0">View Attendence</a></li>
 				<%--  <c:if test="${objOfEmployee.getUserRole().contains('ROLE_ADMIN')}"> --%>
 				<!-- <li><a href="subordinates.html">Subordinates</a></li>  -->
 				<%-- </c:if> --%>
@@ -121,32 +121,5 @@
 	</form:form>
 	<br />
 	<br />
-	<%-- <a href="/MetaHrm/viewAttendence.html?employeeId=${objOfEmployee.getEmployeeId()}" 
-	id="viewAttendence" class="btn btn-block btn-primary btn-default">View Previous attendence</a> --%>
-	<%-- <div id="prevAttendence">
-	<table>
-	<tr>
-		<th>Date [yyyy-MM-dd HH:mm]</th>
-		<th>Status</th>
-	</tr>
-		<c:choose>
-			<c:when test="${!objOfEmployee.getAttendenceList().isEmpty()}">
-				<c:forEach items="${objOfEmployee.getAttendenceList()}" var="attendenceObj">
-					<tr>
-						<td>
-							<fmt:formatDate value="${attendenceObj.getAttendenceDate()}"
-							pattern="yyyy-MM-dd HH:mm" var="attendenceDateTime" /> 
-							<c:out value="${attendenceDateTime}" />
-						</td>
-						<td>${attendenceObj.getStatus()}</td>
-					</tr>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-				<label>No Attendence found</label>
-			</c:otherwise>
-		</c:choose>
-		</table>
-	</div> --%>
 </body>
 </html>

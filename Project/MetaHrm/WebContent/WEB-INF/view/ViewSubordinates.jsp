@@ -17,7 +17,14 @@
 <link rel="stylesheet" href="css/adminHome.css">
 <script src="js/bootstrap.min.js"></script>
 <script src="js/subordinates.js"></script>
-
+<style type="text/css">
+#viewEmpTable td{
+	width:100px;
+}
+#viewEmpTable a{
+	width:70px;
+}
+</style>
 </head>
 <body>
 	<c:url value="/j_spring_security_logout" var="logoutUrl" />
@@ -31,69 +38,84 @@
 		}
 	</script>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="/MetaHrm/index.html">MetaHrm</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li class="active"><a href="UserHomePage.html">Punch In/Out</a></li>
-        <li><a href="viewAttendence.html?employeeId=${objOfEmployee.getEmployeeId()}">View Attendence</a></li>
-        <li><a href="addSubordinates.html">Add Subordinates</a></li>
-        <li><a href="viewSubordinates.html">View Subordinates</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      	<c:if test="${pageContext.request.userPrincipal.name != null}">
-			<li>Welcome : ${pageContext.request.userPrincipal.name} | </li>
-			<li><a href="javascript:formSubmit()"> Logout</a></li>
-		</c:if>
-      </ul>
-    </div>
-  </div>
-</nav>
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/MetaHrm/index.html">MetaHrm</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a href="#">Home</a></li>
+				<li class="active"><a href="UserHomePage.html">Punch In/Out</a></li>
+				<li><a href="viewAttendence.html?pageNumber=0">View
+						Attendence</a></li>
+				<li><a href="addSubordinates.html">Add Subordinates</a></li>
+				<li><a href="viewSubordinates.html">View Subordinates</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<c:if test="${pageContext.request.userPrincipal.name != null}">
+					<li>Welcome : ${pageContext.request.userPrincipal.name} |</li>
+					<li><a href="javascript:formSubmit()"> Logout</a></li>
+				</c:if>
+			</ul>
+		</div>
+	</div>
+	</nav>
 
 
 	<br />
 	<br />
-	<div class="addEmp">
-		
-		<form:form action="/MetaHrm/viewEmployee.html" id="empForm" commandName="employeeBean" class="form-horizontal">
-			<h3>Add employee</h3><br/><br/>
-			<table id="viewEmpTable">
-				<tr>
-					<td><label>Select Subordinates : </label></td>
-					<td>
-						<div class="input-group input-sm" id="empList">
-							<c:choose>
-								<c:when test="${!listOfAllEmployees.isEmpty()}">
-									<select class="form-control" id="supervisor" multiple="true"
-									name="subordinates">
-										<c:forEach items="${listOfAllEmployeeBeans}" var="emp">
-											<option value="${emp.getUsername()}">${emp.getEmployeeName()}</option>
-										</c:forEach>
-									</select>
-								</c:when>
-								<c:otherwise>
-									<label>No Employees found</label>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</td>
-				</tr>
-			</table>
-			<div class="form-actions">
-				<input type="submit" id="addEmpButton" value="Add Employee" class="form-control btn btn-info"
-					 />
-			</div>
-			<div class="input-group input-sm" id="empList11"></div>
-		</form:form>
+	<div class="input-group input-sm" id="empList">
+		<label>Subordinates : </label><br /> <br />
+		<table id="viewEmpTable">
+			<c:choose>
+				<c:when test="${!listOfAllEmployeeBeans.isEmpty()}">
+					<c:forEach items="${listOfAllEmployeeBeans}" var="emp">
+						<tr>
+							<td>${emp.getEmployeeName()}</td>
+							<td><a
+								href="/MetaHrm/viewEmployeeDetails.html?username=${emp.getUsername()}"
+								id="empDetailView">View</a></td>
+							<td><a
+								href="/MetaHrm/deleteEmployee.html?employeeId=${emp.getEmployeeId()}"
+								id="empDetailDelete">Delete</a></td>
+						</tr>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<label>No Subordinates Found</label>
+				</c:otherwise>
+			</c:choose>
+		</table>
+	</div>
+	<div id="empDetail">
+	<form:form method="POST" commandName="employeeBean"
+		id="detailForm" action="/MetaHrm/editDetails.html">
+	<table border="1">
+	<tr>
+			<th>Employee id: </th>
+			<td><form:input path="employeeId" value="${employeeBean.getEmployeeId()}"/></td>
+		</tr>
+		<tr>
+			<th>Employee Name : </th>
+			<td><form:input path="employeeName" value="${employeeBean.getEmployeeName()}"/></td>
+		</tr>
+		<tr>
+			<th>Username : </th>
+			<td><form:input path="username" value="${employeeBean.getUsername()}"/></td>
+		</tr>
+	</table>
+	<input style="width: 120px; margin-left: 50px;" type="submit"
+			id="editDetail" class="btn btn-block btn-primary btn-default"
+			value="Edit" >  <!-- onClick="editDetail()" -->
+	<a  style="width: 120px; margin-left: 50px;" href="/MetaHrm/deleteEmployee.html?employeeId=${emp.getEmployeeId()}" class="btn-danger form-control btn btn-default "
+	id="empDetailDelete">Delete</a>
+	</form:form>
 	</div>
 </body>
 </html>

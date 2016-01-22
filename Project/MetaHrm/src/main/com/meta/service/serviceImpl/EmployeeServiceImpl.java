@@ -43,5 +43,22 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public Employee findByUserName(String userName) {
 		return employeeDao.findByUserName(userName);
 	}
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public Employee findByUserNameNew(String userName){
+		return employeeDao.findByUserNameNew(userName);
+	}
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public void deleteEmployee(int employeeId){
+		employeeDao.deleteEmployee(employeeId);
+	}
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public List<Employee> getAllSubordinates(Employee employeeModel){
+		return employeeDao.getAllSubordinates(employeeModel);
+	}
 }

@@ -21,4 +21,10 @@ public interface EmployeeService {
 	
 	public Employee findByUserName(String userName);
 	
+	public Employee findByUserNameNew(String userName);
+	
+	public void deleteEmployee(int employeeId);
+	
+	public List<Employee> getAllSubordinates(Employee employeeModel);
+	
 }

@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
@@ -50,8 +51,22 @@ public class AttendenceDaoImpl implements AttendenceDao {
     }
     
     @Override
-    public List<Attendence> getAttendenceList(int employeeId) {
-    	return null;
+    public List<Attendence> getAttendenceList(Employee employeeModel, int pageNumber) {
+    	int limitResultsPerPage = 2;
+    	Criteria crit = sessionFactory.getCurrentSession().createCriteria(
+				Attendence.class);
+		crit.add(Restrictions.eq("employee", employeeModel));
+		crit.setFirstResult(pageNumber * limitResultsPerPage);
+    	crit.setMaxResults(limitResultsPerPage);
+    	return (List<Attendence>) crit.list();
+    }
+    
+    @Override
+    public List<Attendence> getAllAttendence(Employee employeeModel) {
+    	Criteria crit = sessionFactory.getCurrentSession().createCriteria(
+				Attendence.class);
+		crit.add(Restrictions.eq("employee", employeeModel));
+		return (List<Attendence>) crit.list();
     }
     
 }

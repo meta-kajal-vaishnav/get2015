@@ -62,7 +62,7 @@ public class Employee {
 	private Set<EmployeeRole> userRole;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="employee", cascade={CascadeType.ALL}, fetch = FetchType.EAGER)//eager else punch in ni
+	@OneToMany(mappedBy="employee", cascade={CascadeType.ALL}, fetch = FetchType.LAZY)//eager karo else punch in ni
 	private Collection<Attendence> attendenceList;
 	
 	@JsonIgnore
@@ -73,7 +73,7 @@ public class Employee {
     private Collection<Employee> managers;// = new HashSet<Employee>()
 	
 	@JsonIgnore
-    @ManyToMany(mappedBy="managers", fetch = FetchType.LAZY)
+    @ManyToMany(cascade={CascadeType.ALL}, mappedBy="managers")  //, fetch = FetchType.LAZY
     private Collection<Employee> subordinates;// = new HashSet<Employee>()
 	
 //	@OneToMany(mappedBy="manager")

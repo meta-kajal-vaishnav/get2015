@@ -19,5 +19,7 @@ public interface AttendenceDao {
     
     public Date getLatestAttendence(Employee employee);
     
-    public List<Attendence> getAttendenceList(int employeeId);
+    public List<Attendence> getAttendenceList(Employee employeeModel, int pageNumber);
+    
+    public List<Attendence> getAllAttendence(Employee employeeModel);
 }

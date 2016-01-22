@@ -13,4 +13,10 @@ public interface EmployeeDao {
 	public List<Employee> getAllEmployeesListNew();
 	
 	public Employee findByUserName(String username);
+	
+	public Employee findByUserNameNew(String userName);
+	
+	public void deleteEmployee(int employeeId);
+	
+	public List<Employee> getAllSubordinates(Employee employeeModel);
 }
